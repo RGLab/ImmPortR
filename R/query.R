@@ -28,7 +28,7 @@ query <- function(endpoint, study) {
 #' @examples
 #' \dontrun{
 #' elisa <- query_dataset("elisa", "SDY269")
-#' elispot <- query_dataset("SDY269")
+#' elispot <- query_dataset("elispot", "SDY269")
 #' fcsAnalyzed <- query_dataset("fcsAnalyzed", "SDY269")
 #' hai <- query_dataset("hai", "SDY269")
 #' hlaTyping <- query_dataset("hlaTyping", "SDY269")
@@ -39,5 +39,21 @@ query <- function(endpoint, study) {
 #' }
 #' @export
 query_dataset <- function(dataset, study) {
+  dataset_list <- c(
+    "elisa",
+    "elispot",
+    "fcsAnalyzed",
+    "hai",
+    "hlaTyping",
+    "kirTyping",
+    "mbaa",
+    "neutAbTiter",
+    "pcr"
+  )
+  if (!dataset %in% dataset_list) {
+    stop("'", dataset, "' is an invalid dataset name. ",
+         "Valid dataset names are: ", paste(dataset_list, collapse = ", "))
+  }
+
   query(dataset, study)
 }
