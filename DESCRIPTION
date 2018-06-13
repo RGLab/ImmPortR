@@ -9,6 +9,8 @@ LazyData: true
 ByteCompile: true
 RoxygenNote: 6.0.1
 Imports: 
-    httr
+    httr,
+    jsonlite,
+    utils
 Suggests: 
     testthat
