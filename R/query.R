@@ -15,7 +15,7 @@ query <- function(endpoint, study) {
     stop(content(res)$error, call. = FALSE)
   }
 
-  res
+  content(res)
 }
 
 #' query dataset by study accession

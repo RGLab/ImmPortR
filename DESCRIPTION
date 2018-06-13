@@ -10,3 +10,5 @@ ByteCompile: true
 RoxygenNote: 6.0.1
 Imports: 
     httr
+Suggests: 
+    testthat
