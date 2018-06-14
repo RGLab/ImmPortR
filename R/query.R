@@ -1,9 +1,7 @@
 #' @importFrom httr GET add_headers
+#' @importFrom jsonlite fromJSON
 query <- function(endpoint, study) {
-  token <- get_token(
-    username = getOption("ImmPortUsername"),
-    password = getOption("ImmPortPassword")
-  )
+  token <- get_token()
 
   res <- GET(
     url = paste0("https://api.immport.org/data/query/result/", endpoint),
@@ -15,7 +13,15 @@ query <- function(endpoint, study) {
     stop(content(res)$error, call. = FALSE)
   }
 
-  content(res)
+  raw <- content(res, as = "text")
+  parsed <- fromJSON(raw)
+
+  if (length(parsed) == 0) {
+    warning("'", endpoint, "' is empty...", call. = FALSE, immediate. = TRUE)
+    parsed <- data.frame()
+  }
+
+  parsed
 }
 
 #' query dataset by study accession

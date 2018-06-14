@@ -1,10 +1,18 @@
+#' List file or directory from ImmPort
+#'
+#' @param path A character. File or directory to list
+#'
+#' @return A list.
+#'
+#' @examples
+#' \dontrun{
+#' list_immport("/SDY1/StudyFiles")
+#' }
+#' @export
 #' @importFrom jsonlite toJSON
-list_file <- function(file) {
-  token <- get_token(
-    username = getOption("ImmPortUsername"),
-    password = getOption("ImmPortPassword")
-  )
-  body <- toJSON(list(path = file), auto_unbox = TRUE)
+list_immport <- function(path) {
+  token <- get_token()
+  body <- toJSON(list(path = path), auto_unbox = TRUE)
 
   res <- POST(
     url = "https://api.immport.org/data/list",
@@ -18,8 +26,8 @@ list_file <- function(file) {
   content(res)
 }
 
-get_aspera_token <- function(file, token) {
-  body <- toJSON(list(paths = file))
+get_aspera_token <- function(path, token) {
+  body <- toJSON(list(paths = path))
 
   res <- POST(
     url = "https://api.immport.org/data/download/token",
@@ -55,12 +63,20 @@ get_aspera <- function() {
   file.path(immport, "immport-data-download-tool", "aspera")
 }
 
-download_file <- function(file, output_dir = ".") {
-  token <- get_token(
-    username = getOption("ImmPortUsername"),
-    password = getOption("ImmPortPassword")
-  )
-  aspera_token <- get_aspera_token(file, token)
+#' Downlaod file or directory from ImmPort
+#'
+#' @param path A character. File or directory to download.
+#' @param output_dir A character. Output directory.
+#'
+#' @examples
+#' \dontrun{
+#' download_immport("/SDY1/StudyFiles/Casale_Study_Summary_Report.doc")
+#' }
+#' @export
+download_immport <- function(path, output_dir = ".") {
+  token <- get_token()
+  aspera_token <- get_aspera_token(path, token)
+
   os <- get_os()
   aspera <- get_aspera()
   ascp <- file.path(aspera, "cli", "bin", os, "ascp")
@@ -69,17 +85,17 @@ download_file <- function(file, output_dir = ".") {
   command <- paste0(
     ascp,
     " -v",
-    " -L ", output_dir,
+    # " -L ", output_dir,
     " -i ", key_file,
     " -O ", "33001",
     " -P ", "33001",
     " -W ", aspera_token,
     " --user=databrowser",
-    " aspera-immport.niaid.nih.gov:'", file, "' ",
+    " aspera-immport.niaid.nih.gov:'", path, "' ",
     output_dir
   )
 
-  message("Downloading '", file, "'...")
+  message("Downloading '", path, "'...")
   system(command)
 }
 

@@ -1,5 +1,6 @@
 #' @importFrom httr POST content
-get_token <- function(username, password) {
+get_token <- function(username = getOption("ImmPortUsername"),
+                      password = getOption("ImmPortPassword")) {
   if (is.null(username)) stop("set username")
   if (is.null(password)) stop("set password")
 
