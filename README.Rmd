@@ -32,12 +32,14 @@ devtools::install_github("juyeongkim/ImmPortR")
 ## Set ImmPort credential
 
 ``` r
-options(ImmPortUsername = "yourImmPortUsername")
-options(ImmPortPassword = "yourImmPortPassword")
+Sys.setenv(ImmPortUsername = "yourImmPortUsername")
+Sys.setenv(ImmPortPassword = "yourImmPortPassword")
 ```
 
 
 ## Usage
+
+### Query datasets
 
 ``` r
 library(ImmPortR)
@@ -51,4 +53,10 @@ kirTyping <- query_dataset("kirTyping", "SDY269")
 mbaa <- query_dataset("mbaa", "SDY269")
 neutAbTiter <- query_dataset("neutAbTiter", "SDY269")
 pcr <- query_dataset("pcr", "SDY269")
+```
+
+### Download files
+
+``` r
+download_immport("/SDY1/StudyFiles/Casale_Study_Summary_Report.doc")
 ```
