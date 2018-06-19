@@ -41,26 +41,64 @@ get_aspera_token <- function(path, token) {
   content(res)$token
 }
 
+install_aspera <- function(immport, file_name, file_url) {
+  message("Downloading '", file_name, "'...")
+  tool_path <- file.path(immport, file_name)
+  download.file(
+    url = file_url,
+    destfile = tool_path,
+    quiet = TRUE
+  )
+
+  message("Unzipping '", file_name, "'...")
+  suppressMessages(unzip(tool_path, exdir = immport, unzip = getOption("unzip")))
+}
+
 #' @importFrom utils download.file unzip
+#' @importFrom httr HEAD
 get_aspera <- function() {
   immport <- file.path(Sys.getenv("HOME"), ".immport")
+  file_name <- "immport-data-download-tool.zip"
+  file_url <- file.path("http://www.immport.org/downloads/data/download/tool", file_name)
+  folder_name <- gsub(".zip", "", file_name)
+  folder_path <- file.path(immport, folder_name)
 
   if (!dir.exists(immport)) {
     message("Creating '", immport, "' directory...")
     dir.create(immport)
 
-    message("Downloading 'immport-data-download-tool'...")
-    tool_path <- file.path(immport, "immport-data-download-tool.zip")
-    download.file(
-      url = "http://www.immport.org/downloads/data/download/tool/immport-data-download-tool.zip",
-      destfile = tool_path
-    )
+    install_aspera(immport, file_name, file_url)
+  } else {
+    file_local <- paste0(folder_path, ".zip")
 
-    message("Unzipping 'immport-data-download-tool.zip'...")
-    suppressMessages(unzip(tool_path, exdir = immport, unzip = getOption("unzip")))
+    if (!file.exists(folder_path)) {
+      suppressWarnings(file.remove(file_local))
+      install_aspera(immport, file_name, file_url)
+    } else {
+      file_head <- HEAD(file_url)
+
+      if (file_head$status_code != 200) {
+        stop("The download tool is not available at ", file_url)
+      }
+
+      file_modified <- as.POSIXct(file_head$headers$`last-modified`, format = "%a, %d %B %Y %X", tz = "GMT")
+      folder_created <- file.info(folder_path)[1, "ctime"]
+
+      if (file_modified > folder_created) {
+        message("The download tool is outdated.")
+
+        message("Removing '", folder_path, "'...")
+        unlink(folder_path, recursive = TRUE)
+
+        message("Removing '", file_local, "'...")
+        suppressWarnings(file.remove(file_local))
+
+        install_aspera(immport, file_name, file_url)
+      }
+    }
   }
 
-  file.path(immport, "immport-data-download-tool", "aspera")
+  file.path(folder_path, "aspera")
 }
 
 #' Downlaod file or directory from ImmPort
