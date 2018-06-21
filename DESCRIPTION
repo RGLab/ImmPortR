@@ -15,4 +15,5 @@ Imports:
     jsonlite,
     utils
 Suggests: 
-    testthat
+    testthat,
+    covr

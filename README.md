@@ -2,7 +2,7 @@ ImmPortR
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Travis build status](https://travis-ci.org/juyeongkim/ImmPortR.svg?branch=master)](https://travis-ci.org/juyeongkim/ImmPortR)
+[![Travis build status](https://travis-ci.org/juyeongkim/ImmPortR.svg?branch=master)](https://travis-ci.org/juyeongkim/ImmPortR) [![Coverage status](https://codecov.io/gh/juyeongkim/ImmPortR/branch/master/graph/badge.svg)](https://codecov.io/github/juyeongkim/ImmPortR?branch=master)
 
 An R wrapper around [the ImmPort API](http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/).
 
