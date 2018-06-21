@@ -3,6 +3,8 @@ Version: 0.0.0.9000
 Title: An R wrapper around the ImmPort API
 Description: An R wrapper around the ImmPort API.
 Authors@R: person("Ju Yeong", "Kim", email = "jkim2345@fredhutch.org", role = c("aut", "cre"))
+URL: https://github.com/juyeongkim/ImmPortR
+BugReports: https://github.com/juyeongkim/ImmPortR/issues
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
