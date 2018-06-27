@@ -4,29 +4,30 @@
 \alias{query_dataset}
 \title{query dataset by study accession}
 \usage{
-query_dataset(dataset, study)
+query_dataset(study, dataset)
 }
 \arguments{
-\item{dataset}{a character. dataset name.}
-
 \item{study}{a character. study accession.}
+
+\item{dataset}{a character. dataset name. Datasets are "elisa", "elispot",
+"fcsAnalyzed", "hai", "hlaTyping", "kirTyping", "mbaa", "neutAbTiter", "pcr"}
 }
 \value{
-list
+data.frame
 }
 \description{
 query dataset by study accession
 }
 \examples{
 \dontrun{
-elisa <- query_dataset("elisa", "SDY269")
-elispot <- query_dataset("elispot", "SDY269")
-fcsAnalyzed <- query_dataset("fcsAnalyzed", "SDY269")
-hai <- query_dataset("hai", "SDY269")
-hlaTyping <- query_dataset("hlaTyping", "SDY269")
-kirTyping <- query_dataset("kirTyping", "SDY269")
-mbaa <- query_dataset("mbaa", "SDY269")
-neutAbTiter <- query_dataset("neutAbTiter", "SDY269")
-pcr <- query_dataset("pcr", "SDY269")
+elisa <- query_dataset("SDY269", "elisa")
+elispot <- query_dataset("SDY269", "elispot")
+fcsAnalyzed <- query_dataset("SDY269", "fcsAnalyzed")
+hai <- query_dataset("SDY269", "hai")
+hlaTyping <- query_dataset("SDY269", "hlaTyping")
+kirTyping <- query_dataset("SDY269", "kirTyping")
+mbaa <- query_dataset("SDY269", "mbaa")
+neutAbTiter <- query_dataset("SDY269", "neutAbTiter")
+pcr <- query_dataset("SDY269", "pcr")
 }
 }

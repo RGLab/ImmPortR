@@ -108,37 +108,38 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>query_dataset</span>(<span class='no'>dataset</span>, <span class='no'>study</span>)</pre>
+    <pre class="usage"><span class='fu'>query_dataset</span>(<span class='no'>study</span>, <span class='no'>dataset</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dataset</th>
-      <td><p>a character. dataset name.</p></td>
-    </tr>
-    <tr>
       <th>study</th>
       <td><p>a character. study accession.</p></td>
+    </tr>
+    <tr>
+      <th>dataset</th>
+      <td><p>a character. dataset name. Datasets are "elisa", "elispot",
+"fcsAnalyzed", "hai", "hlaTyping", "kirTyping", "mbaa", "neutAbTiter", "pcr"</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>list</p>
+    <p>data.frame</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='no'>elisa</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"elisa"</span>, <span class='st'>"SDY269"</span>)
-<span class='no'>elispot</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"elispot"</span>, <span class='st'>"SDY269"</span>)
-<span class='no'>fcsAnalyzed</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"fcsAnalyzed"</span>, <span class='st'>"SDY269"</span>)
-<span class='no'>hai</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"hai"</span>, <span class='st'>"SDY269"</span>)
-<span class='no'>hlaTyping</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"hlaTyping"</span>, <span class='st'>"SDY269"</span>)
-<span class='no'>kirTyping</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"kirTyping"</span>, <span class='st'>"SDY269"</span>)
-<span class='no'>mbaa</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"mbaa"</span>, <span class='st'>"SDY269"</span>)
-<span class='no'>neutAbTiter</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"neutAbTiter"</span>, <span class='st'>"SDY269"</span>)
-<span class='no'>pcr</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"pcr"</span>, <span class='st'>"SDY269"</span>)
+<span class='no'>elisa</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"SDY269"</span>, <span class='st'>"elisa"</span>)
+<span class='no'>elispot</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"SDY269"</span>, <span class='st'>"elispot"</span>)
+<span class='no'>fcsAnalyzed</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"SDY269"</span>, <span class='st'>"fcsAnalyzed"</span>)
+<span class='no'>hai</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"SDY269"</span>, <span class='st'>"hai"</span>)
+<span class='no'>hlaTyping</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"SDY269"</span>, <span class='st'>"hlaTyping"</span>)
+<span class='no'>kirTyping</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"SDY269"</span>, <span class='st'>"kirTyping"</span>)
+<span class='no'>mbaa</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"SDY269"</span>, <span class='st'>"mbaa"</span>)
+<span class='no'>neutAbTiter</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"SDY269"</span>, <span class='st'>"neutAbTiter"</span>)
+<span class='no'>pcr</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"SDY269"</span>, <span class='st'>"pcr"</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
