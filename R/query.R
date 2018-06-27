@@ -58,7 +58,7 @@ query_dataset <- function(study, dataset) {
     "pcr"
   )
 
-  if (length(dataset) != 1) stop("`dataset` must be one.")
+  stopifnot(length(dataset) == 1)
   if (!dataset %in% dataset_list) {
     stop(
       "'", dataset, "' is an invalid dataset name. ",
