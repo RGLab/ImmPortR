@@ -11,6 +11,9 @@ download_immport(path, output_dir = ".")
 
 \item{output_dir}{A character. Output directory.}
 }
+\value{
+An integer.
+}
 \description{
 Downlaod file or directory from ImmPort
 }
@@ -18,4 +21,7 @@ Downlaod file or directory from ImmPort
 \dontrun{
 download_immport("/SDY1/StudyFiles/Casale_Study_Summary_Report.doc")
 }
+}
+\references{
+\url{http://docs.immport.org/#API/FileDownloadAPI/filedownloadapi/#example-of-manual-steps-to-download-a-file}
 }

@@ -4,6 +4,8 @@
 #'
 #' @return A list.
 #'
+#' @references \url{http://docs.immport.org/#API/FileDownloadAPI/filedownloadapi/#example-for-listing-a-shared-data-directory-or-file}
+#'
 #' @examples
 #' \dontrun{
 #' list_immport("/SDY1/StudyFiles")
@@ -105,6 +107,10 @@ get_aspera <- function() {
 #'
 #' @param path A character. File or directory to download.
 #' @param output_dir A character. Output directory.
+#'
+#' @return An integer.
+#'
+#' @references \url{http://docs.immport.org/#API/FileDownloadAPI/filedownloadapi/#example-of-manual-steps-to-download-a-file}
 #'
 #' @examples
 #' \dontrun{

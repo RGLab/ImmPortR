@@ -13,7 +13,7 @@ query_dataset(study, dataset)
 "fcsAnalyzed", "hai", "hlaTyping", "kirTyping", "mbaa", "neutAbTiter", "pcr"}
 }
 \value{
-data.frame
+A data.frame.
 }
 \description{
 query dataset by study accession
@@ -30,4 +30,7 @@ mbaa <- query_dataset("SDY269", "mbaa")
 neutAbTiter <- query_dataset("SDY269", "neutAbTiter")
 pcr <- query_dataset("SDY269", "pcr")
 }
+}
+\references{
+\url{http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/}
 }

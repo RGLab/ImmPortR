@@ -30,7 +30,9 @@ query <- function(endpoint, study) {
 #' @param dataset a character. dataset name. Datasets are "elisa", "elispot",
 #' "fcsAnalyzed", "hai", "hlaTyping", "kirTyping", "mbaa", "neutAbTiter", "pcr"
 #'
-#' @return data.frame
+#' @return A data.frame.
+#'
+#' @references \url{http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/}
 #'
 #' @examples
 #' \dontrun{
