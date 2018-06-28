@@ -1,0 +1,88 @@
+---
+title: "SDY180: Abundance of Plasmablasts Measured by Multiparameter Flow Cytometry"
+author: "Ju Yeong Kim"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 6,
+  fig.height = 12,
+  dpi = 100,
+  fig.align = "center"
+)
+```
+
+
+
+## Summary
+
+This report investigate the abundance of plasmablast (and other B cell subsets) over time after vaccination with Pneumovax, Fluzone, or no vaccination (saline control group).  It can be seen on the figure below that the plasmablast subset peaks at day 7 in both vaccine groups, with a stronger and more durable response with Pneumovax. As expected, there is no clear peak in the saline group. These results are similar to those reported in Figure 6B of [Obermoser et al. (2013)](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3681204/) published as part of the original study. This vignette reproduces a report available on [the ImmuneSpace portal](https://www.immunespace.org/reports/Studies/SDY180/runReport.view?reportId=module%3ASDY180%2Freports%2Fschemas%2Fstudy%2Fdemographics%2Fplasmablast_abundance.Rmd) using `ImmPortR`.
+
+
+
+## Load ImmPortR and other libraries
+
+```{r libraries, cache=FALSE}
+library(ImmPortR)
+library(ggplot2)
+library(dplyr)
+```
+
+## Reterieve the flow cytometry analyzed results
+
+```{r connection}
+fcsAnalyzed <- query_dataset("SDY180", "fcsAnalyzed")
+```
+
+
+
+## Subset the population of interest
+
+```{r data-subset}
+fcsAnalyzed <- fcsAnalyzed %>% 
+  filter(grepl("Plasma", populationNameReported)) %>% 
+  mutate(
+    cohort = gsub("Study g", "G", armName),
+    populationStatisticReported = as.double(populationStatisticReported),
+    studyTimeCollected = as.factor(studyTimeCollected),
+    populationStatisticReported = as.double(populationStatisticReported)
+  )
+```
+
+
+
+## Compute the median
+
+```{r data-summary}
+fcsAnalyzedMedian <- fcsAnalyzed %>% 
+  group_by(cohort, studyTimeCollected, populationNameReported) %>% 
+  summarise(medianCellReported = median(populationStatisticReported + 1, na.rm = TRUE))
+```
+
+
+
+## Abundance of plasmablasts measured by multi-parameter flow cytometry
+
+```{r visualization, dev='png'}
+ggplot(fcsAnalyzed, aes(x = studyTimeCollected, y = populationStatisticReported + 1)) +
+  geom_boxplot() +
+  geom_jitter() +
+  scale_y_log10() +
+  facet_grid(cohort ~ populationNameReported, scale = "free") +
+  xlab("Time") +
+  ylab(expression(paste("Number of cells/", mu, "l"))) +
+  geom_line(data = fcsAnalyzedMedian, aes(
+    x = studyTimeCollected, y = medianCellReported,
+    group = 1
+  ), color = "black", size = 1.2) +
+  labs(title = "Plasma cell abundance after vaccination")
+```
+
