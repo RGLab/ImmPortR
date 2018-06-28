@@ -42,7 +42,7 @@ devtools::install_github("juyeongkim/ImmPortR")
 ## Register and set ImmPort credential
 
 * [Register](https://immport-user-admin.niaid.nih.gov:8443/registrationuser/registration)
-* Read [the User Agreemen](http://www.immport.org/agreement) for ImmPort
+* Read [the User Agreement](http://www.immport.org/agreement) for ImmPort
 * On your R console, set environment variables with your credential:
 
 ``` r
