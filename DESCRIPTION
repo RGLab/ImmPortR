@@ -1,7 +1,7 @@
 Package: ImmPortR
 Version: 0.0.0.9000
 Title: An R wrapper around the ImmPort API
-Description: An R wrapper around the ImmPort API.
+Description: An R wrapper around the ImmPort API and its download tool (http://docs.immport.org/).
 Authors@R: person("Ju Yeong", "Kim", email = "jkim2345@fredhutch.org", role = c("aut", "cre"))
 URL: https://github.com/juyeongkim/ImmPortR
 BugReports: https://github.com/juyeongkim/ImmPortR/issues
