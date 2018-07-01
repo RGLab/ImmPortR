@@ -18,6 +18,7 @@ list_immport <- function(path) {
 
   res <- POST(
     url = "https://api.immport.org/data/list",
+    config = config(useragent = get_useragent()),
     add_headers(
       Authorization = paste("bearer", token),
       "Content-Type" = "application/json"
@@ -33,6 +34,7 @@ get_aspera_token <- function(path, token) {
 
   res <- POST(
     url = "https://api.immport.org/data/download/token",
+    config = config(useragent = get_useragent()),
     add_headers(
       Authorization = paste("bearer", token),
       "Content-Type" = "application/json"
@@ -53,7 +55,13 @@ install_aspera <- function(immport, file_name, file_url) {
   )
 
   message("Unzipping '", file_name, "'...")
-  suppressMessages(unzip(tool_path, exdir = immport, unzip = getOption("unzip")))
+  suppressMessages(
+    unzip(
+      tool_path,
+      exdir = immport,
+      unzip = getOption("unzip")
+    )
+  )
 }
 
 #' @importFrom utils download.file unzip
@@ -61,7 +69,10 @@ install_aspera <- function(immport, file_name, file_url) {
 get_aspera <- function() {
   immport <- file.path(Sys.getenv("HOME"), ".immport")
   file_name <- "immport-data-download-tool.zip"
-  file_url <- file.path("http://www.immport.org/downloads/data/download/tool", file_name)
+  file_url <- file.path(
+    "http://www.immport.org/downloads/data/download/tool",
+    file_name
+  )
   folder_name <- gsub(".zip", "", file_name)
   folder_path <- file.path(immport, folder_name)
 
@@ -83,7 +94,11 @@ get_aspera <- function() {
         stop("The download tool is not available at ", file_url)
       }
 
-      file_modified <- as.POSIXct(file_head$headers$`last-modified`, format = "%a, %d %B %Y %X", tz = "GMT")
+      file_modified <- as.POSIXct(
+        x = file_head$headers$`last-modified`,
+        format = "%a, %d %B %Y %X",
+        tz = "GMT"
+      )
       folder_created <- file.info(folder_path)[1, "ctime"]
 
       if (file_modified > folder_created) {

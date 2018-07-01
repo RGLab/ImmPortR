@@ -6,6 +6,7 @@ query <- function(endpoint, study) {
   res <- GET(
     url = paste0("https://api.immport.org/data/query/result/", endpoint),
     query = list(studyAccession = study),
+    config = config(useragent = get_useragent()),
     add_headers(Authorization = paste("bearer", token))
   )
 
