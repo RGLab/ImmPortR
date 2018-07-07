@@ -42,7 +42,13 @@ get_aspera_token <- function(path, token) {
     body = body
   )
 
-  content(res)$token
+  res <- content(res)
+
+  if (!is.null(res$error)) {
+    stop(res$message)
+  }
+
+  res
 }
 
 install_aspera <- function(immport, file_name, file_url) {
