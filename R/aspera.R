@@ -26,7 +26,33 @@ list_immport <- function(path) {
     body = body
   )
 
-  content(res)
+  res <- content(res)
+
+  if (!is.null(res$error)) {
+    stop(res$message)
+  }
+
+  if (!is.null(res$self)) {
+    res$self$permissions <-paste(
+      unlist(res$self$permissions, use.names = FALSE),
+      collapse = ","
+    )
+    res$self <- as.data.frame(res$self, stringsAsFactors = FALSE)
+  }
+
+  if (!is.null(res$items)) {
+    res$items <- lapply(res$items, function(item) {
+      item$permissions <- paste(
+        unlist(item$permissions, use.names = FALSE),
+        collapse = ","
+      )
+      item$fileCount <- ifelse(is.null(item$fileCount), NA, item$fileCount)
+      as.data.frame(item, stringsAsFactors = FALSE)
+    })
+    res$items <- do.call(rbind, res$items)
+  }
+
+  res
 }
 
 get_aspera_token <- function(path, token) {
