@@ -13,8 +13,7 @@ RoxygenNote: 6.0.1
 Imports:
     utils,
     httr,
-    jsonlite,
-    utils
+    jsonlite
 Suggests:
     testthat,
     covr,
