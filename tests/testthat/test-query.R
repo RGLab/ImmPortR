@@ -5,4 +5,6 @@ test_that("`query_dataset` works", {
 
   expect_is(res, "data.frame")
   expect_length(res, 41)
+
+  expect_error(query_dataset("invalidDataset", "SDY269"))
 })

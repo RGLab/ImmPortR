@@ -5,6 +5,8 @@ test_that("`list_immport` works", {
 
   expect_is(res, "list")
   expect_equal(names(res), c("self", "items", "item_count", "total_count", "parameters"))
+
+  expect_error(list_immport("/WrongPath"))
 })
 
 test_that("`download_immport` works", {
@@ -16,4 +18,6 @@ test_that("`download_immport` works", {
   expect_is(res, "integer")
   expect_equal(res, 0)
   expect_true(basename(file_path) %in% dir(temp_dir))
+
+  expect_error(download_immport("/WrongPath"))
 })
