@@ -49,7 +49,7 @@ hlaTyping <- query_dataset("SDY269", "hlaTyping")
 kirTyping <- query_dataset("SDY269", "kirTyping")
 mbaa <- query_dataset("SDY269", "mbaa")
 neutAbTiter <- query_dataset("SDY269", "neutAbTiter")
-  pcr <- query_dataset("SDY269", "pcr")
+pcr <- query_dataset("SDY269", "pcr")
 ```
 
 ### Download files
