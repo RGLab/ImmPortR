@@ -1,10 +1,13 @@
+QUERY_URL <- "https://api.immport.org"
+
 #' @importFrom httr GET add_headers
 #' @importFrom jsonlite fromJSON
 query <- function(endpoint, study) {
   token <- get_token()
 
   res <- GET(
-    url = paste0("https://api.immport.org/data/query/result/", endpoint),
+    url = QUERY_URL,
+    path = c("data", "query", "result", endpoint),
     query = list(studyAccession = study),
     config = config(useragent = get_useragent()),
     add_headers(Authorization = paste("bearer", token))

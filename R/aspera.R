@@ -17,7 +17,8 @@ list_immport <- function(path) {
   body <- toJSON(list(path = path), auto_unbox = TRUE)
 
   res <- POST(
-    url = "https://api.immport.org/data/list",
+    url = QUERY_URL,
+    path = c("data", "list"),
     config = config(useragent = get_useragent()),
     add_headers(
       Authorization = paste("bearer", token),
@@ -64,7 +65,8 @@ get_aspera_token <- function(path, token) {
   body <- toJSON(list(paths = path))
 
   res <- POST(
-    url = "https://api.immport.org/data/download/token",
+    url = QUERY_URL,
+    path = c("data", "download", "token"),
     config = config(useragent = get_useragent()),
     add_headers(
       Authorization = paste("bearer", token),
