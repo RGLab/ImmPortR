@@ -2,7 +2,7 @@ ImmPortR
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Travis build status](https://travis-ci.org/RGLab/ImmPortR.svg?branch=master)](https://travis-ci.org/RGLab/ImmPortR) [![Coverage status](https://codecov.io/gh/RGLab/ImmPortR/branch/master/graph/badge.svg)](https://codecov.io/github/RGLab/ImmPortR?branch=master)
+[![Travis build status](https://travis-ci.org/RGLab/ImmPortR.svg?branch=master)](https://travis-ci.org/RGLab/ImmPortR) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/umenopusk26e89mf?svg=true)](https://ci.appveyor.com/project/juyeongkim/immportr) [![Coverage status](https://codecov.io/gh/RGLab/ImmPortR/branch/master/graph/badge.svg)](https://codecov.io/github/RGLab/ImmPortR?branch=master)
 
 **WORK IN PROGRESS**
 

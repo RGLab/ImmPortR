@@ -1,6 +1,8 @@
 context("aspera")
 
 test_that("`list_immport` works", {
+  skip_on_appveyor()
+
   res <- list_immport("/SDY1/StudyFiles")
 
   expect_is(res, "list")
@@ -10,6 +12,8 @@ test_that("`list_immport` works", {
 })
 
 test_that("`download_immport` works", {
+  skip_on_appveyor()
+
   file_path <- "/SDY1/StudyFiles/Casale_Study_Summary_Report.doc"
   temp_dir <- tempdir()
 
