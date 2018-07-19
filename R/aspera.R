@@ -101,8 +101,8 @@ install_aspera <- function(immport, file_name, file_url) {
 get_aspera <- function() {
   immport <- file.path(Sys.getenv("HOME"), ".immport")
   file_name <- "immport-data-download-tool.zip"
-  file_url <- file.path(
-    "http://www.immport.org/downloads/data/download/tool",
+  file_url <- paste0(
+    "http://www.immport.org/downloads/data/download/tool/",
     file_name
   )
   folder_name <- gsub(".zip", "", file_name)

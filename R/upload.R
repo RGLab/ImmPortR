@@ -5,11 +5,12 @@ UPLOAD_URL <- "https://immport-upload.niaid.nih.gov:8443"
 
 # HELPER FUNCTIONS -------------------------------------------------------------
 
-GET_upload <- function(url) {
+GET_upload <- function(path) {
   token <- get_token()
 
   res <- GET(
-    url = url,
+    url = UPLOAD_URL,
+    path = path,
     config = config(useragent = get_useragent()),
     add_headers(Authorization = paste("bearer", token))
   )
@@ -45,8 +46,7 @@ GET_upload <- function(url) {
 #' @importFrom httr write_disk
 #' @export
 generate_templates <- function(workspace_id, output_dir = ".") {
-  url <- file.path(
-    UPLOAD_URL,
+  path <- c(
     "data",
     "upload",
     "documentation",
@@ -57,7 +57,8 @@ generate_templates <- function(workspace_id, output_dir = ".") {
   output_file <- file.path(output_dir, paste0("ImmportTemplates.", workspace_id, ".zip"))
 
   res <- GET(
-    url = url,
+    url = UPLOAD_URL,
+    path = path,
     config = config(useragent = get_useragent()),
     add_headers(Authorization = paste("bearer", token)),
     write_disk(output_file, overwrite = TRUE)
@@ -84,12 +85,9 @@ generate_templates <- function(workspace_id, output_dir = ".") {
 #'
 #' @export
 list_workspaces <- function() {
-  url <- file.path(
-    UPLOAD_URL,
-    "workspaces"
-  )
+  path <- "workspaces"
 
-  GET_upload(url)$workspaces
+  GET_upload(path)$workspaces
 }
 
 #' Check Status of Upload/Validation Ticket
@@ -106,8 +104,7 @@ list_workspaces <- function() {
 #' }
 #' @export
 check_status <- function(ticket) {
-  url <- file.path(
-    UPLOAD_URL,
+  path <- c(
     "data",
     "upload",
     "registration",
@@ -115,7 +112,7 @@ check_status <- function(ticket) {
     "status"
   )
 
-  GET_upload(url)$status
+  GET_upload(path)$status
 }
 
 #' Retrieve Summary Information on Upload/Validation Ticket
@@ -133,8 +130,7 @@ check_status <- function(ticket) {
 #'
 #' @export
 get_ticket_summary <- function(ticket) {
-  url <- file.path(
-    UPLOAD_URL,
+  path <- c(
     "data",
     "upload",
     "registration",
@@ -143,7 +139,7 @@ get_ticket_summary <- function(ticket) {
     "summary"
   )
 
-  GET_upload(url)$summary
+  GET_upload(path)$summary
 }
 
 #' Retrieve Database Report on a Upload/Validation Ticket
@@ -161,8 +157,7 @@ get_ticket_summary <- function(ticket) {
 #'
 #' @export
 get_ticket_report <- function(ticket) {
-  url <- file.path(
-    UPLOAD_URL,
+  path <- c(
     "data",
     "upload",
     "registration",
@@ -171,7 +166,7 @@ get_ticket_report <- function(ticket) {
     "database"
   )
 
-  text <- GET_upload(url)$database
+  text <- GET_upload(path)$database
 
   if (is.null(text)) {
     stop(
