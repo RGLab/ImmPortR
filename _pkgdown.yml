@@ -7,6 +7,7 @@ reference:
   - title: "Query"
     contents:
       - query_dataset
+      - query_filePath
   - title: "Download"
     contents:
       - list_immport
@@ -15,6 +16,7 @@ reference:
     contents:
       - list_workspaces
       - generate_templates
+      - validate_zip
       - check_status
       - get_ticket_summary
       - get_ticket_report

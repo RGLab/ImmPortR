@@ -75,3 +75,9 @@ pcr <- query_dataset("SDY269", "pcr")
 ``` r
 download_immport("/SDY1/StudyFiles/Casale_Study_Summary_Report.doc")
 ```
+
+## Validate data
+
+``` r
+validate_zip("yourStudyData.zip", workspace_id = 99999, upload_notes = "for SDY9999")
+```
