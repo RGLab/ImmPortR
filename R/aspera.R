@@ -159,6 +159,7 @@ get_aspera <- function() {
 #'
 #' @param path A character. File or directory to download.
 #' @param output_dir A character. Output directory.
+#' @param verbose A logical. Show stdout/stderr from Aspera.
 #'
 #' @return An integer.
 #'
@@ -169,7 +170,7 @@ get_aspera <- function() {
 #' download_immport("/SDY1/StudyFiles/Casale_Study_Summary_Report.doc")
 #' }
 #' @export
-download_immport <- function(path, output_dir = ".") {
+download_immport <- function(path, output_dir = ".", verbose = FALSE) {
   token <- get_token()
   aspera_token <- get_aspera_token(path, token)
 
@@ -192,7 +193,7 @@ download_immport <- function(path, output_dir = ".") {
   )
 
   message("Downloading '", path, "'...")
-  system(command)
+  system(command, ignore.stdout = !verbose, ignore.stderr = !verbose)
 }
 
 get_os <- function() {
