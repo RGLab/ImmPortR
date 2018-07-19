@@ -2,11 +2,11 @@ ImmPortR
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Travis build status](https://travis-ci.org/juyeongkim/ImmPortR.svg?branch=master)](https://travis-ci.org/juyeongkim/ImmPortR) [![Coverage status](https://codecov.io/gh/juyeongkim/ImmPortR/branch/master/graph/badge.svg)](https://codecov.io/github/juyeongkim/ImmPortR?branch=master)
+[![Travis build status](https://travis-ci.org/RGLab/ImmPortR.svg?branch=master)](https://travis-ci.org/RGLab/ImmPortR) [![Coverage status](https://codecov.io/gh/RGLab/ImmPortR/branch/master/graph/badge.svg)](https://codecov.io/github/RGLab/ImmPortR?branch=master)
 
 **WORK IN PROGRESS**
 
-`ImmPortR` is an *unofficial* R wrapper around [the ImmPort API](http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/) and [its download tool](http://docs.immport.org/#Tool/FileDownloadTool/filedownloadtool/).
+`ImmPortR` is an R wrapper around [the ImmPort API](http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/) and [its download tool](http://docs.immport.org/#Tool/FileDownloadTool/filedownloadtool/).
 
 What is ImmPort?
 ----------------
@@ -18,7 +18,7 @@ Installation
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("juyeongkim/ImmPortR")
+devtools::install_github("RGLab/ImmPortR")
 ```
 
 Register and set ImmPort credential
