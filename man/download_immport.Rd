@@ -4,12 +4,14 @@
 \alias{download_immport}
 \title{Downlaod file or directory from ImmPort}
 \usage{
-download_immport(path, output_dir = ".")
+download_immport(path, output_dir = ".", verbose = FALSE)
 }
 \arguments{
 \item{path}{A character. File or directory to download.}
 
 \item{output_dir}{A character. Output directory.}
+
+\item{verbose}{A logical. Show stdout/stderr from Aspera.}
 }
 \value{
 An integer.
