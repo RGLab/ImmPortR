@@ -49,7 +49,12 @@ list_immport <- function(path) {
       item$fileCount <- ifelse(is.null(item$fileCount), NA, item$fileCount)
       as.data.frame(item, stringsAsFactors = FALSE)
     })
-    res$items <- do.call(rbind, res$items)
+
+    if (length(res$items) == 0) {
+      res$items <- data.frame()
+    } else {
+      res$items <- do.call(rbind, res$items)
+    }
   }
 
   res
