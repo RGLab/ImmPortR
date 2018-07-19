@@ -24,6 +24,48 @@ GET_upload <- function(path) {
   res
 }
 
+POST_upload <- function(path, body) {
+  token <- get_token()
+
+  res <- POST(
+    url = UPLOAD_URL,
+    path = path,
+    body = body,
+    encode = "multipart",
+    config = config(useragent = get_useragent()),
+    add_headers(Authorization = paste("bearer", token))
+  )
+
+  res <- content(res)
+
+  if (!is.null(res$error)) {
+    stop(res$message)
+  }
+
+  res
+}
+
+#' @importFrom httr upload_file
+upload_online <- function(file_path, workspace_id, package_name, upload_notes, upload_purpose) {
+  path <- c(
+    "data",
+    "upload",
+    "type",
+    "online"
+  )
+
+  body <- list(
+    workspaceId = workspace_id,
+    packageName = package_name,
+    uploadNotes = upload_notes,
+    uploadPurpose = upload_purpose,
+    serverName = "",
+    file = upload_file(file_path)
+  )
+
+  POST_upload(path, body)
+}
+
 
 # MAIN FUNCTIONS ---------------------------------------------------------------
 
@@ -88,6 +130,36 @@ list_workspaces <- function() {
   path <- "workspaces"
 
   GET_upload(path)$workspaces
+}
+
+#' Validate a Zip File
+#'
+#' @param file_path A character. File path to the zip file to upload.
+#' @param workspace_id An integer.
+#' @param upload_notes A character. Optional.
+#'
+#' @return A character. Ticket.
+#'
+#' @references \url{http://docs.immport.org/#API/DataUploadAPI/datauploadapi/#zip-file-upload-for-validation-with-authentication}
+#'
+#' @examples
+#' \dontrun{
+#' validate_zip("groundbreakingStudy.zip")
+#' }
+#' @export
+validate_zip <- function(file_path, workspace_id, upload_notes = "") {
+  stopifnot(length(file_path) == 1)
+  stopifnot(is.character(file_path))
+  stopifnot(file.exists(file_path))
+  stopifnot(tools::file_ext(file_path) == "zip")
+
+  upload_online(
+    file_path = file_path,
+    workspace_id = workspace_id,
+    package_name = "",
+    upload_notes = upload_notes,
+    upload_purpose = "validateData"
+  )
 }
 
 #' Check Status of Upload/Validation Ticket
