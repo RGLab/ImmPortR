@@ -1,12 +1,12 @@
 context("query")
 
 test_that("`query_dataset` works", {
-  res <- query_dataset("elisa", "SDY269")
+  res <- query_dataset("SDY269", "elisa")
 
   expect_is(res, "data.frame")
   expect_length(res, 41)
 
-  expect_error(query_dataset("invalidDataset", "SDY269"))
+  expect_error(query_dataset("SDY269", "invalidDataset"))
 })
 
 test_that("`query_filePath` works", {
