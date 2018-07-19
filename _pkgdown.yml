@@ -3,3 +3,18 @@ template:
     bootswatch: flatly
     ganalytics: UA-121557036-1
 
+reference:
+  - title: "Query"
+    contents:
+      - query_dataset
+  - title: "Download"
+    contents:
+      - list_immport
+      - download_immport
+  - title: "Upload"
+    contents:
+      - list_workspaces
+      - generate_templates
+      - check_status
+      - get_ticket_summary
+      - get_ticket_report
