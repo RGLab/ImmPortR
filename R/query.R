@@ -72,3 +72,20 @@ query_dataset <- function(study, dataset) {
 
   query(dataset, study)
 }
+
+#' query file path by study acession
+#'
+#' @param study a character. study accession.
+#'
+#' @return A data.frame.
+#'
+#' @references \url{http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/#example-of-a-request-on-the-filepath-endpoint}
+#'
+#' @examples
+#' \dontrun{
+#' query_filePath("SDY269")
+#' }
+#' @export
+query_filePath <- function(study) {
+  query("filePath", study)
+}
