@@ -2,8 +2,8 @@
 
 export(check_status)
 export(download_immport)
+export(download_ticket_report)
 export(generate_templates)
-export(get_ticket_report)
 export(get_ticket_summary)
 export(list_immport)
 export(list_workspaces)

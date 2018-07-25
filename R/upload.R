@@ -214,21 +214,32 @@ get_ticket_summary <- function(ticket) {
   GET_upload(path)$summary
 }
 
-#' Retrieve Database Report on a Upload/Validation Ticket
+#' Download Database Report on a Upload/Validation Ticket
 #'
 #' @param ticket A character.
+#' @param output_dir A character. Output directory.
 #'
-#' @return A character. Raw text of the report.
+#' @return A character. File path to the report.
 #'
 #' @references \url{http://docs.immport.org/#API/DataUploadAPI/datauploadapi/#database-information-on-upload-ticket-request-with-authentication}
 #'
 #' @examples
 #' \dontrun{
-#' get_ticket_report("testuser_20180523_19544")
+#' # download the database report of a upload/validation ticket
+#' download_ticket_report("testuser_20180523_19544")
+#'
+#' # inspect the database report
+#' file.edit("testuser_20180523_19544_uploadReport.txt")
 #' }
 #'
 #' @export
-get_ticket_report <- function(ticket) {
+download_ticket_report <- function(ticket, output_dir = ".") {
+  if (!dir.exists(output_dir)) {
+    stop("'", output_dir, "' does not exists.")
+  } else if (file.access(output_dir, mode = 2) != 0) {
+    stop("You do not have write access to '", output_dir, "'.")
+  }
+
   path <- c(
     "data",
     "upload",
@@ -247,5 +258,9 @@ get_ticket_report <- function(ticket) {
     )
   }
 
-  text
+  file_path <- file.path(output_dir, paste0(ticket, "_uploadReport.txt"))
+
+  writeLines(text, con = file_path, sep = "")
+
+  file_path
 }

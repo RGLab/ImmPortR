@@ -1,6 +1,7 @@
 context("upload")
 
 upload_ticket <- "jkim2345_20171213_15861"
+validation_ticket <- "jkim2345_20171213_15860"
 
 test_that("`generate_templates` works", {
   output_file <- generate_templates(5851, output_dir = tempdir())
@@ -43,10 +44,11 @@ test_that("`get_ticket_summary` works", {
   expect_error(get_ticket_summary("invalid_19991231_99999"))
 })
 
-test_that("`get_ticket_report` works", {
-  res <- get_ticket_report(upload_ticket)
+test_that("`download_ticket_report` works", {
+  res <- download_ticket_report(upload_ticket, output_dir = tempdir())
 
-  expect_is(res, "character")
+  expect_true(file.exists(res))
+  expect_gt(file.size(res), 0)
 
-  expect_error(get_ticket_report("invalid_19991231_99999"))
+  expect_error(download_ticket_report("invalid_19991231_99999"))
 })
