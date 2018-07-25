@@ -19,4 +19,4 @@ reference:
       - validate_zip
       - check_status
       - get_ticket_summary
-      - get_ticket_report
+      - download_ticket_report

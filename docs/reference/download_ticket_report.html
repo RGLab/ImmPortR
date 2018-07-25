@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve Database Report on a Upload/Validation Ticket — get_ticket_report • ImmPortR</title>
+<title>Download Database Report on a Upload/Validation Ticket — download_ticket_report • ImmPortR</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Retrieve Database Report on a Upload/Validation Ticket — get_ticket_report" />
+<meta property="og:title" content="Download Database Report on a Upload/Validation Ticket — download_ticket_report" />
 
-<meta property="og:description" content="Retrieve Database Report on a Upload/Validation Ticket" />
+<meta property="og:description" content="Download Database Report on a Upload/Validation Ticket" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -119,18 +119,18 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve Database Report on a Upload/Validation Ticket</h1>
+    <h1>Download Database Report on a Upload/Validation Ticket</h1>
     <small class="dont-index">Source: <a href='https://github.com/RGLab/ImmPortR/blob/master/R/upload.R'><code>R/upload.R</code></a></small>
-    <div class="hidden name"><code>get_ticket_report.Rd</code></div>
+    <div class="hidden name"><code>download_ticket_report.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Retrieve Database Report on a Upload/Validation Ticket</p>
+    <p>Download Database Report on a Upload/Validation Ticket</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_ticket_report</span>(<span class='no'>ticket</span>)</pre>
+    <pre class="usage"><span class='fu'>download_ticket_report</span>(<span class='no'>ticket</span>, <span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='st'>"."</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -139,11 +139,15 @@
       <th>ticket</th>
       <td><p>A character.</p></td>
     </tr>
+    <tr>
+      <th>output_dir</th>
+      <td><p>A character. Output directory.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A character. Raw text of the report.</p>
+    <p>A character. File path to the report.</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -152,7 +156,11 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='fu'>get_ticket_report</span>(<span class='st'>"testuser_20180523_19544"</span>)
+<span class='co'># download the database report of a upload/validation ticket</span>
+<span class='fu'>download_ticket_report</span>(<span class='st'>"testuser_20180523_19544"</span>)
+
+<span class='co'># inspect the database report</span>
+<span class='fu'>file.edit</span>(<span class='st'>"testuser_20180523_19544_uploadReport.txt"</span>)
 <span class='co'># }</span><div class='input'>
 </div></pre>
   </div>
