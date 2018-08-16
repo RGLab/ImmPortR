@@ -173,6 +173,10 @@ get_aspera <- function() {
 #' }
 #' @export
 download_immport <- function(path, output_dir = ".", verbose = FALSE) {
+  if (file.access(output_dir, mode = 2) == -1) {
+    stop("You do not have write access to '", output_dir, "'.")
+  }
+
   token <- get_token()
   aspera_token <- get_aspera_token(path, token)
 
