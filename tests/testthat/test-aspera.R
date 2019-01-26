@@ -4,7 +4,7 @@ test_that("`list_immport` works", {
   res <- list_immport("/SDY1/StudyFiles")
 
   expect_is(res, "list")
-  expect_equal(names(res), c("self", "items", "item_count", "total_count", "parameters", "skip", "count"))
+  expect_equal(names(res), c("self", "items", "item_count", "total_count", "parameters"))
 
   expect_error(list_immport("/WrongPath"))
 })
