@@ -172,6 +172,7 @@ get_aspera <- function() {
 #' download_immport("/SDY1/StudyFiles/Casale_Study_Summary_Report.doc")
 #' }
 #' @export
+#' @importFrom processx run
 download_immport <- function(path, output_dir = ".", verbose = FALSE) {
   if (file.access(output_dir, mode = 2) == -1) {
     stop("You do not have write access to '", output_dir, "'.")
@@ -185,21 +186,20 @@ download_immport <- function(path, output_dir = ".", verbose = FALSE) {
   ascp <- file.path(aspera, "cli", "bin", os, "ascp")
   key_file <- file.path(aspera, "cli", "etc", "asperaweb_id_dsa.openssh")
 
-  command <- paste0(
-    ascp,
-    " -v",
-    # " -L ", output_dir,
-    " -i ", key_file,
-    " -O ", "33001",
-    " -P ", "33001",
-    " -W ", aspera_token,
-    " --user=databrowser",
-    " aspera-immport.niaid.nih.gov:'", path, "' ",
+  args <- c(
+    "-v",
+    # "-L", output_dir,
+    "-i", key_file,
+    "-O", "33001",
+    "-P", "33001",
+    "-W", aspera_token$token,
+    "--user=databrowser",
+    paste0("aspera-immport.niaid.nih.gov:", path),
     output_dir
   )
 
   message("Downloading '", path, "'...")
-  system(command, ignore.stdout = !verbose, ignore.stderr = !verbose)
+  run(command = ascp, args = args, echo = verbose, echo_cmd = verbose)
 }
 
 get_os <- function() {
