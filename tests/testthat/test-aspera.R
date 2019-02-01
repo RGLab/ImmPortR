@@ -17,8 +17,8 @@ test_that("`download_immport` works", {
 
   res <- download_immport(path = file_path, output_dir = temp_dir)
 
-  expect_is(res, "integer")
-  expect_equal(res, 0)
+  expect_is(res, "list")
+  expect_equal(names(res), c("status", "stdout", "stderr", "timeout"))
   expect_true(basename(file_path) %in% dir(temp_dir))
 
   expect_error(download_immport("/WrongPath"))
