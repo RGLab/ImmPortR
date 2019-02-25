@@ -199,7 +199,13 @@ download_immport <- function(path, output_dir = ".", verbose = FALSE) {
   )
 
   message("Downloading '", path, "'...")
-  run(command = ascp, args = args, echo = verbose, echo_cmd = verbose)
+  invisible(run(
+    command = ascp,
+    args = args,
+    echo = verbose,
+    echo_cmd = verbose,
+    spinner = TRUE
+  ))
 }
 
 get_os <- function() {
