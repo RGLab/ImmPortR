@@ -2,39 +2,52 @@ ImmPortR
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Travis build status](https://travis-ci.org/RGLab/ImmPortR.svg?branch=master)](https://travis-ci.org/RGLab/ImmPortR) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/umenopusk26e89mf?svg=true)](https://ci.appveyor.com/project/juyeongkim/immportr) [![Coverage status](https://codecov.io/gh/RGLab/ImmPortR/branch/master/graph/badge.svg)](https://codecov.io/github/RGLab/ImmPortR?branch=master)
 
-**WORK IN PROGRESS**
+[![Travis build
+status](https://travis-ci.org/RGLab/ImmPortR.svg?branch=master)](https://travis-ci.org/RGLab/ImmPortR)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/umenopusk26e89mf?svg=true)](https://ci.appveyor.com/project/juyeongkim/immportr)
+[![Coverage
+status](https://codecov.io/gh/RGLab/ImmPortR/branch/master/graph/badge.svg)](https://codecov.io/github/RGLab/ImmPortR?branch=master)
+[![Project Status: WIP – Initial development is in progress, but there
+has not yet been a stable, usable release suitable for the
+public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
-`ImmPortR` is an R wrapper around [the ImmPort API](http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/) and [its download tool](http://docs.immport.org/#Tool/FileDownloadTool/filedownloadtool/).
+`ImmPortR` is an R wrapper around [the ImmPort
+API](http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/) and [its
+download
+tool](http://docs.immport.org/#Tool/FileDownloadTool/filedownloadtool/).
 
-What is ImmPort?
-----------------
+## What is ImmPort?
 
-> [ImmPort](http://immport.org) is funded by the NIH, NIAID and DAIT in support of the NIH mission to share data with the public. Data shared through ImmPort has been provided by NIH-funded programs, other research organizations and individual scientists ensuring these discoveries will be the foundation of future research.
+> [ImmPort](http://immport.org) is funded by the NIH, NIAID and DAIT in
+> support of the NIH mission to share data with the public. Data shared
+> through ImmPort has been provided by NIH-funded programs, other
+> research organizations and individual scientists ensuring these
+> discoveries will be the foundation of future research.
 
-Installation
-------------
+## Installation
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("RGLab/ImmPortR")
 ```
 
-Register and set ImmPort credential
------------------------------------
+## Register and set ImmPort credential
 
--   [Register](https://immport-user-admin.niaid.nih.gov:8443/registrationuser/registration)
--   Read [the User Agreement](http://www.immport.org/agreement) for ImmPort
--   On your R console, set environment variables with your credential:
+  - [Register](https://immport-user-admin.niaid.nih.gov:8443/registrationuser/registration)
+  - Read [the User Agreement](http://www.immport.org/agreement) for
+    ImmPort
+  - On your R console, set environment variables with your credential:
+
+<!-- end list -->
 
 ``` r
 Sys.setenv(ImmPortUsername = "yourImmPortUsername")
 Sys.setenv(ImmPortPassword = "yourImmPortPassword")
 ```
 
-Usage
------
+## Usage
 
 ### Query datasets
 
