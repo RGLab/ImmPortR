@@ -14,6 +14,11 @@ cache:
   - C:\RLibrary
 
 # Adapt as necessary starting from here
+before_build:
+ - cmd: |
+      mkdir C:\aspera
+      wget --no-check-certificate https://download.asperasoft.com/download/sw/cli/3.9.1/ibm-aspera-cli-3.9.1.1401.be67d47-win-v140_xp-32-release.zip -P C:\aspera
+      unzip C:\aspera\ibm-aspera-cli-3.9.1.1401.be67d47-win-v140_xp-32-release.zip -d C:\aspera
 
 build_script:
   - travis-tool.sh install_deps
