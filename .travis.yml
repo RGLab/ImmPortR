@@ -4,9 +4,17 @@ language: R
 sudo: false
 cache: packages
 before_script:
-  - wget https://download.asperasoft.com/download/sw/cli/3.9.1/ibm-aspera-cli-3.9.1.1401.be67d47-linux-64-release.sh
-  - chmod +x ibm-aspera-cli-3.9.1.1401.be67d47-linux-64-release.sh
-  - ./ibm-aspera-cli-3.9.1.1401.be67d47-linux-64-release.sh
+  - |
+    if [[ "$TRAVIS_OS_NAME" == "osx" ]]
+    then
+      wget https://download.asperasoft.com/download/sw/cli/3.9.1/ibm-aspera-cli-3.9.1.1401.be67d47-mac-10.7-64-release.sh -P ~/
+      chmod +x ~/ibm-aspera-cli-3.9.1.1401.be67d47-mac-10.7-64-release.sh
+      ~/ibm-aspera-cli-3.9.1.1401.be67d47-mac-10.7-64-release.sh
+    else
+      wget https://download.asperasoft.com/download/sw/cli/3.9.1/ibm-aspera-cli-3.9.1.1401.be67d47-linux-64-release.sh -P ~/
+      chmod +x ~/ibm-aspera-cli-3.9.1.1401.be67d47-linux-64-release.sh
+      ~/ibm-aspera-cli-3.9.1.1401.be67d47-linux-64-release.sh
+    fi
 os:
   - linux
   - osx
