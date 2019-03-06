@@ -3,6 +3,10 @@
 language: R
 sudo: false
 cache: packages
+before_script:
+  - wget https://download.asperasoft.com/download/sw/cli/3.9.1/ibm-aspera-cli-3.9.1.1401.be67d47-linux-64-release.sh
+  - chmod +x ibm-aspera-cli-3.9.1.1401.be67d47-linux-64-release.sh
+  - ./ibm-aspera-cli-3.9.1.1401.be67d47-linux-64-release.sh
 os:
   - linux
   - osx
