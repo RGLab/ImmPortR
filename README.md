@@ -14,9 +14,12 @@ has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
 `ImmPortR` is an R wrapper around [the ImmPort
-API](http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/) and [its
-download
-tool](http://docs.immport.org/#Tool/FileDownloadTool/filedownloadtool/).
+API](http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/) to query
+datasets from [ImmPort Shared Data](https://www.immport.org/shared/home)
+and upload data to [ImmPort Private
+Data](https://immport.niaid.nih.gov/home), and it also utilizes [the
+Aspera CLI](https://downloads.asperasoft.com/en/documentation/62) to
+download files from ImmPort Shared Data.
 
 ## What is ImmPort?
 
@@ -28,17 +31,31 @@ tool](http://docs.immport.org/#Tool/FileDownloadTool/filedownloadtool/).
 
 ## Installation
 
+### ImmPortR
+
 ``` r
-# install.packages("devtools")
-devtools::install_github("RGLab/ImmPortR")
+# install.packages("remotes")
+remotes::install_github("RGLab/ImmPortR")
 ```
+
+### The Aspera CLI
+
+> The IBM Aspera Command-Line Interface (the Aspera CLI) is a collection
+> of Aspera tools for performing high-speed, secure data transfers from
+> the command line. The Aspera CLI is for users and organizations who
+> want to automate their transfer
+    workflows.
+
+  - [Download](https://downloads.asperasoft.com/en/downloads/62)
+  - [Documentation](https://downloads.asperasoft.com/en/documentation/62)
 
 ## Register and set ImmPort credentials
 
   - [Register](https://immport-user-admin.niaid.nih.gov:8443/registrationuser/registration)
   - Read [the User Agreement](http://www.immport.org/agreement) for
     ImmPort
-  - On your R console, set environment variables with your credential:
+  - Set environment variables with your ImmPort credentials, on your R
+    console:
 
 <!-- end list -->
 
@@ -47,10 +64,12 @@ Sys.setenv(ImmPortUsername = "yourImmPortUsername")
 Sys.setenv(ImmPortPassword = "yourImmPortPassword")
 ```
 
-## Install the Aspera CLI
+  - Or in `.Renviron` file in your home directory:
 
-  - [Download](https://downloads.asperasoft.com/en/downloads/62)
-  - [Documentation](https://downloads.asperasoft.com/en/documentation/62)
+<!-- end list -->
+
+    ImmPortUsername=yourImmPortUsername
+    ImmPortPassword=yourImmPortPassword
 
 ## Usage
 
