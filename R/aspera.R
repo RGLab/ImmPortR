@@ -98,7 +98,11 @@ get_aspera_path <- function() {
 
 check_path <- function(path) {
   if (!file.exists(path)) {
-    stop(path, " does not exist. Check your apsera installation.")
+    stop(
+      path, " does not exist. Check your Apsera CLI installation.\n",
+      "  Download and install Aspera CLI if you haven't already done so.\n",
+      "  https://downloads.asperasoft.com/en/documentation/62"
+    )
   }
 }
 
@@ -145,9 +149,9 @@ download_immport <- function(path, output_dir = ".", aspera_path = NULL, verbose
     stop("You do not have write permission to '", output_dir, "'.")
   }
 
+  aspera <- get_aspera(aspera_path)
   token <- get_token()
   aspera_token <- get_aspera_token(path, token)
-  aspera <- get_aspera(aspera_path)
 
   args <- c(
     "-v",
