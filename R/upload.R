@@ -66,6 +66,24 @@ upload_online <- function(file_path, workspace_id, package_name, upload_notes, u
   POST_upload(path, body)
 }
 
+get_os <- function() {
+  if (.Platform$OS.type == "windows") {
+    stop("Windows is not currently supported")
+  } else if (Sys.info()["sysname"] == "Darwin") {
+    "osx"
+  } else if (.Platform$OS.type == "unix") {
+    if (Sys.info()["machine"] == "x86_64") {
+      "linux"
+    } else if (Sys.info()["machine"] == "x86_32") {
+      "linux32"
+    } else {
+      stop("Unknown arch")
+    }
+  } else {
+    stop("Unknown OS")
+  }
+}
+
 
 # MAIN FUNCTIONS ---------------------------------------------------------------
 

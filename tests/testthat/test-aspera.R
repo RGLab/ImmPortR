@@ -10,8 +10,6 @@ test_that("`list_immport` works", {
 })
 
 test_that("`download_immport` works", {
-  skip_on_os("windows")
-
   file_path <- "/SDY1/StudyFiles/Casale_Study_Summary_Report.doc"
   temp_dir <- tempdir()
 

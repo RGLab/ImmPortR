@@ -4,17 +4,25 @@
 \alias{download_immport}
 \title{Downlaod file or directory from ImmPort}
 \usage{
-download_immport(path, output_dir = ".", verbose = FALSE)
+download_immport(path, output_dir = ".", aspera_path = NULL,
+  verbose = FALSE)
 }
 \arguments{
 \item{path}{A character. File or directory to download.}
 
 \item{output_dir}{A character. Output directory.}
 
+\item{aspera_path}{A charater. Path to Aspera CLI installation.}
+
 \item{verbose}{A logical. Show stdout/stderr from Aspera.}
 }
 \value{
-An integer.
+A list with components:
+  * status The exit status of the process. If this is `NA`, then the
+    process was killed and had no exit status.
+  * stdout The standard output of the command, in a character scalar.
+  * stderr The standard error of the command, in a character scalar.
+  * timeout Whether the process was killed because of a timeout.
 }
 \description{
 Downlaod file or directory from ImmPort

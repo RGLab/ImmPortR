@@ -33,7 +33,7 @@ tool](http://docs.immport.org/#Tool/FileDownloadTool/filedownloadtool/).
 devtools::install_github("RGLab/ImmPortR")
 ```
 
-## Register and set ImmPort credential
+## Register and set ImmPort credentials
 
   - [Register](https://immport-user-admin.niaid.nih.gov:8443/registrationuser/registration)
   - Read [the User Agreement](http://www.immport.org/agreement) for
@@ -46,6 +46,11 @@ devtools::install_github("RGLab/ImmPortR")
 Sys.setenv(ImmPortUsername = "yourImmPortUsername")
 Sys.setenv(ImmPortPassword = "yourImmPortPassword")
 ```
+
+## Install the Aspera CLI
+
+  - [Download](https://downloads.asperasoft.com/en/downloads/62)
+  - [Documentation](https://downloads.asperasoft.com/en/documentation/62)
 
 ## Usage
 

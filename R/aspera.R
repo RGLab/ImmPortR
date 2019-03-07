@@ -84,86 +84,53 @@ get_aspera_token <- function(path, token) {
   res
 }
 
-install_aspera <- function(immport, file_name, file_url) {
-  message("Downloading '", file_name, "'...")
-  tool_path <- file.path(immport, file_name)
-  download.file(
-    url = file_url,
-    destfile = tool_path,
-    quiet = TRUE
-  )
-
-  message("Unzipping '", file_name, "'...")
-  suppressMessages(
-    unzip(
-      tool_path,
-      exdir = immport,
-      unzip = getOption("unzip")
-    )
-  )
+get_aspera_path <- function() {
+  if (.Platform$OS.type == "windows") {
+    "C:/aspera/cli"
+  } else if (Sys.info()["sysname"] == "Darwin") {
+    file.path(Sys.getenv("HOME"), "Applications/Aspera CLI")
+  } else if (.Platform$OS.type == "unix") {
+    file.path(Sys.getenv("HOME"), ".aspera/cli")
+  } else {
+    stop("Unsupported operating system...")
+  }
 }
 
-#' @importFrom utils download.file unzip
-#' @importFrom httr HEAD
-get_aspera <- function() {
-  immport <- file.path(Sys.getenv("HOME"), ".immport")
-  file_name <- "immport-data-download-tool.zip"
-  file_url <- paste0(
-    "http://www.immport.org/downloads/data/download/tool/",
-    file_name
-  )
-  folder_name <- gsub(".zip", "", file_name)
-  folder_path <- file.path(immport, folder_name)
+check_path <- function(path) {
+  if (!file.exists(path)) {
+    stop(path, " does not exist. Check your apsera installation.")
+  }
+}
 
-  if (!dir.exists(immport)) {
-    message("Creating '", immport, "' directory...")
-    dir.create(immport)
-
-    install_aspera(immport, file_name, file_url)
-  } else {
-    file_local <- paste0(folder_path, ".zip")
-
-    if (!file.exists(folder_path)) {
-      suppressWarnings(file.remove(file_local))
-      install_aspera(immport, file_name, file_url)
-    } else {
-      file_head <- HEAD(file_url)
-
-      if (file_head$status_code != 200) {
-        stop("The download tool is not available at ", file_url)
-      }
-
-      file_modified <- as.POSIXct(
-        x = file_head$headers$`last-modified`,
-        format = "%a, %d %B %Y %X",
-        tz = "GMT"
-      )
-      folder_created <- file.info(folder_path)[1, "ctime"]
-
-      if (file_modified > folder_created) {
-        message("The download tool is outdated.")
-
-        message("Removing '", folder_path, "'...")
-        unlink(folder_path, recursive = TRUE)
-
-        message("Removing '", file_local, "'...")
-        suppressWarnings(file.remove(file_local))
-
-        install_aspera(immport, file_name, file_url)
-      }
-    }
+get_aspera <- function(aspera_path) {
+  if (is.null(aspera_path)) {
+    aspera_path <- get_aspera_path()
   }
 
-  file.path(folder_path, "aspera")
+  bin <- ifelse(.Platform$OS.type == "windows", "ascp.exe", "ascp")
+  ascp <- file.path(aspera_path, "bin", bin)
+  key_file <- file.path(aspera_path, "etc", "asperaweb_id_dsa.openssh")
+
+  check_path(aspera_path)
+  check_path(ascp)
+  check_path(key_file)
+
+  list(ascp = ascp, key_file = key_file)
 }
 
 #' Downlaod file or directory from ImmPort
 #'
 #' @param path A character. File or directory to download.
 #' @param output_dir A character. Output directory.
+#' @param aspera_path A charater. Path to Aspera CLI installation.
 #' @param verbose A logical. Show stdout/stderr from Aspera.
 #'
-#' @return An integer.
+#' @return A list with components:
+#'   * status The exit status of the process. If this is `NA`, then the
+#'     process was killed and had no exit status.
+#'   * stdout The standard output of the command, in a character scalar.
+#'   * stderr The standard error of the command, in a character scalar.
+#'   * timeout Whether the process was killed because of a timeout.
 #'
 #' @references \url{http://docs.immport.org/#API/FileDownloadAPI/filedownloadapi/#example-of-manual-steps-to-download-a-file}
 #'
@@ -173,23 +140,19 @@ get_aspera <- function() {
 #' }
 #' @export
 #' @importFrom processx run
-download_immport <- function(path, output_dir = ".", verbose = FALSE) {
+download_immport <- function(path, output_dir = ".", aspera_path = NULL, verbose = FALSE) {
   if (file.access(output_dir, mode = 2) == -1) {
-    stop("You do not have write access to '", output_dir, "'.")
+    stop("You do not have write permission to '", output_dir, "'.")
   }
 
   token <- get_token()
   aspera_token <- get_aspera_token(path, token)
-
-  os <- get_os()
-  aspera <- get_aspera()
-  ascp <- file.path(aspera, "cli", "bin", os, "ascp")
-  key_file <- file.path(aspera, "cli", "etc", "asperaweb_id_dsa.openssh")
+  aspera <- get_aspera(aspera_path)
 
   args <- c(
     "-v",
     # "-L", output_dir,
-    "-i", key_file,
+    "-i", aspera$key_file,
     "-O", "33001",
     "-P", "33001",
     "-W", aspera_token$token,
@@ -200,28 +163,10 @@ download_immport <- function(path, output_dir = ".", verbose = FALSE) {
 
   message("Downloading '", path, "'...")
   invisible(run(
-    command = ascp,
+    command = aspera$ascp,
     args = args,
     echo = verbose,
     echo_cmd = verbose,
     spinner = TRUE
   ))
-}
-
-get_os <- function() {
-  if (.Platform$OS.type == "windows") {
-    stop("Windows is not currently supported")
-  } else if (Sys.info()["sysname"] == "Darwin") {
-    "osx"
-  } else if (.Platform$OS.type == "unix") {
-    if (Sys.info()["machine"] == "x86_64") {
-      "linux"
-    } else if (Sys.info()["machine"] == "x86_32") {
-      "linux32"
-    } else {
-      stop("Unknown arch")
-    }
-  } else {
-    stop("Unknown OS")
-  }
 }
