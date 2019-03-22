@@ -5,7 +5,7 @@ UPLOAD_URL <- "https://immport-upload.niaid.nih.gov:8443"
 
 # HELPER FUNCTIONS -------------------------------------------------------------
 
-GET_upload <- function(path) {
+upload_get <- function(path) {
   token <- get_token()
 
   res <- GET(
@@ -24,7 +24,7 @@ GET_upload <- function(path) {
   res
 }
 
-POST_upload <- function(path, body) {
+upload_post <- function(path, body) {
   token <- get_token()
 
   res <- POST(
@@ -63,7 +63,7 @@ upload_online <- function(file_path, workspace_id, package_name, upload_notes, u
     file = upload_file(file_path)
   )
 
-  POST_upload(path, body)
+  upload_post(path, body)
 }
 
 get_os <- function() {
@@ -149,7 +149,7 @@ list_workspaces <- function() {
   path <- "workspaces"
   os <- get_os()
 
-  GET_upload(path)$workspaces
+  upload_get(path)$workspaces
 }
 
 #' Validate a Zip File
@@ -208,7 +208,7 @@ check_status <- function(ticket) {
 
   os <- get_os()
 
-  GET_upload(path)$status
+  upload_get(path)$status
 }
 
 #' Retrieve Summary Information on Upload/Validation Ticket
@@ -237,7 +237,7 @@ get_ticket_summary <- function(ticket) {
 
   os <- get_os()
 
-  GET_upload(path)$summary
+  upload_get(path)$summary
 }
 
 #' Download Database Report on a Upload/Validation Ticket
@@ -277,7 +277,7 @@ download_ticket_report <- function(ticket, output_dir = ".") {
 
   os <- get_os()
 
-  text <- GET_upload(path)$database
+  text <- upload_get(path)$database
 
   if (is.null(text)) {
     stop(
