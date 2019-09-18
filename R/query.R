@@ -2,13 +2,13 @@ QUERY_URL <- "https://api.immport.org"
 
 #' @importFrom httr GET add_headers
 #' @importFrom jsonlite fromJSON
-query <- function(endpoint, study) {
+query <- function(endpoint, query = NULL) {
   token <- get_token()
 
   res <- GET(
     url = QUERY_URL,
-    path = c("data", "query", "result", endpoint),
-    query = list(studyAccession = study),
+    path = c("data", "query", endpoint),
+    query = query,
     config = config(useragent = get_useragent()),
     add_headers(Authorization = paste("bearer", token))
   )
@@ -73,7 +73,7 @@ query_dataset <- function(study, dataset) {
   }
 
 
-  query(dataset, study)
+  query(c("result", dataset), list(studyAccession = study))
 }
 
 #' query file path by study acession
@@ -90,5 +90,5 @@ query_dataset <- function(study, dataset) {
 #' }
 #' @export
 query_filePath <- function(study) {
-  query("filePath", study)
+  query(c("result", "filePath"), list(studyAccession = study))
 }
