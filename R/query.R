@@ -92,3 +92,19 @@ query_dataset <- function(study, dataset) {
 query_filePath <- function(study) {
   query(c("result", "filePath"), list(studyAccession = study))
 }
+
+
+#' query a list of all study accessions
+#'
+#' @return A vector.
+#'
+#' @references \url{http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/}
+#'
+#' @examples
+#' \dontrun{
+#' query_findAllStudyAccessions()
+#' }
+#' @export
+query_findAllStudyAccessions <- function() {
+  query(c("study", "findAllStudyAccessions"))$studyAccessions
+}
