@@ -162,7 +162,7 @@ download_immport <- function(path, output_dir = ".", aspera_path = NULL, verbose
     "-W", aspera_token$token,
     "--user=databrowser",
     paste0("aspera-immport.niaid.nih.gov:", path),
-    output_dir
+    normalizePath(output_dir)
   )
 
   message("Downloading '", path, "'...")
