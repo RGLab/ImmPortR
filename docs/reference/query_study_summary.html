@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Downlaod file or directory from ImmPort — download_immport • ImmPortR</title>
+<title>query the study summary — query_study_summary • ImmPortR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Downlaod file or directory from ImmPort — download_immport" />
-<meta property="og:description" content="Downlaod file or directory from ImmPort" />
+<meta property="og:title" content="query the study summary — query_study_summary" />
+<meta property="og:description" content="query the study summary" />
 
 
 
@@ -130,53 +130,28 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Downlaod file or directory from ImmPort</h1>
-    <small class="dont-index">Source: <a href='https://github.com/RGLab/ImmPortR/blob/master/R/aspera.R'><code>R/aspera.R</code></a></small>
-    <div class="hidden name"><code>download_immport.Rd</code></div>
+    <h1>query the study summary</h1>
+    <small class="dont-index">Source: <a href='https://github.com/RGLab/ImmPortR/blob/master/R/query.R'><code>R/query.R</code></a></small>
+    <div class="hidden name"><code>query_study_summary.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Downlaod file or directory from ImmPort</p>
+    <p>query the study summary</p>
     </div>
 
-    <pre class="usage"><span class='fu'>download_immport</span>(<span class='no'>path</span>, <span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>aspera_path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>query_study_summary</span>(<span class='no'>study</span>)</pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>path</th>
-      <td><p>A character. File or directory to download.</p></td>
-    </tr>
-    <tr>
-      <th>output_dir</th>
-      <td><p>A character. Output directory.</p></td>
-    </tr>
-    <tr>
-      <th>aspera_path</th>
-      <td><p>A charater. Path to Aspera CLI installation.</p></td>
-    </tr>
-    <tr>
-      <th>verbose</th>
-      <td><p>A logical. Show stdout/stderr from Aspera.</p></td>
-    </tr>
-    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list with components:
-  * status The exit status of the process. If this is `NA`, then the
-    process was killed and had no exit status.
-  * stdout The standard output of the command, in a character scalar.
-  * stderr The standard error of the command, in a character scalar.
-  * timeout Whether the process was killed because of a timeout.</p>
+    <p>A list</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p><a href='http://docs.immport.org/#API/FileDownloadAPI/filedownloadapi/#example-of-manual-steps-to-download-a-file'>http://docs.immport.org/#API/FileDownloadAPI/filedownloadapi/#example-of-manual-steps-to-download-a-file</a></p>
+    <p><a href='http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/'>http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>download_immport</span>(<span class='st'>"/SDY1/StudyFiles/Casale_Study_Summary_Report.doc"</span>)
+<span class='fu'>query_study_summary</span>()
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

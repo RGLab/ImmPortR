@@ -108,3 +108,33 @@ query_filePath <- function(study) {
 query_findAllStudyAccessions <- function() {
   query(c("study", "findAllStudyAccessions"))$studyAccessions
 }
+
+#' query the latest study data release version
+#'
+#' @return A character.
+#'
+#' @references \url{http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/}
+#'
+#' @examples
+#' \dontrun{
+#' query_datarelversion()
+#' }
+#' @export
+query_datarelversion <- function() {
+  query(c("studydatarel", "datarelver"))[[1]]
+}
+
+#' query the study summary
+#'
+#' @return A list
+#'
+#' @references \url{http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/}
+#'
+#' @examples
+#' \dontrun{
+#' query_study_summary()
+#' }
+#' @export
+query_study_summary <- function(study) {
+  query(c("study", "summary", study))
+}

@@ -1,5 +1,5 @@
 Package: ImmPortR
-Version: 0.0.0.9000
+Version: 0.0.1
 Title: An R wrapper around the ImmPort API
 Description: ImmPortR is an R wrapper around the ImmPort API to query datasets
   from ImmPort Shared Data and upload data to ImmPort Private Data, and it also
@@ -11,7 +11,7 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 Imports:
     utils,
     httr,

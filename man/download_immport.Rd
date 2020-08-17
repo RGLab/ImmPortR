@@ -4,8 +4,7 @@
 \alias{download_immport}
 \title{Downlaod file or directory from ImmPort}
 \usage{
-download_immport(path, output_dir = ".", aspera_path = NULL,
-  verbose = FALSE)
+download_immport(path, output_dir = ".", aspera_path = NULL, verbose = FALSE)
 }
 \arguments{
 \item{path}{A character. File or directory to download.}
