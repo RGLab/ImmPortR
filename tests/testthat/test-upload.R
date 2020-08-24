@@ -4,8 +4,6 @@ upload_ticket <- "jkim2345_20171213_15861"
 validation_ticket <- "jkim2345_20171213_15860"
 
 test_that("`generate_templates` works", {
-  skip_on_os("windows")
-
   output_file <- generate_templates(5851, output_dir = tempdir())
 
   expect_true(file.exists(output_file))
@@ -16,8 +14,6 @@ test_that("`generate_templates` works", {
 })
 
 test_that("`list_workspaces` works", {
-  skip_on_os("windows")
-
   res <- list_workspaces()
 
   expect_is(res, "list")
@@ -29,8 +25,6 @@ test_that("`list_workspaces` works", {
 })
 
 test_that("`check_status` works", {
-  skip_on_os("windows")
-
   res <- check_status(upload_ticket)
 
   expect_equal(res, "Completed")
@@ -39,8 +33,6 @@ test_that("`check_status` works", {
 })
 
 test_that("`get_ticket_summary` works", {
-  skip_on_os("windows")
-
   res <- get_ticket_summary(upload_ticket)
 
   expect_is(res, "list")
@@ -53,8 +45,6 @@ test_that("`get_ticket_summary` works", {
 })
 
 test_that("`download_ticket_report` works", {
-  skip_on_os("windows")
-
   res <- download_ticket_report(upload_ticket, output_dir = tempdir())
 
   expect_true(file.exists(res))

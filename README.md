@@ -3,15 +3,16 @@ ImmPortR
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![Travis build
-status](https://travis-ci.org/RGLab/ImmPortR.svg?branch=master)](https://travis-ci.org/RGLab/ImmPortR)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/umenopusk26e89mf?svg=true)](https://ci.appveyor.com/project/juyeongkim/immportr)
+<!-- badges: start -->
+
+[![R build
+status](https://github.com/RGLab/ImmPortR/workflows/R-CMD-check/badge.svg)](https://github.com/RGLab/ImmPortR/actions)
 [![Coverage
 status](https://codecov.io/gh/RGLab/ImmPortR/branch/master/graph/badge.svg)](https://codecov.io/github/RGLab/ImmPortR?branch=master)
 [![Project Status: WIP – Initial development is in progress, but there
 has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+<!-- badges: end -->
 
 `ImmPortR` is an R wrapper around [the ImmPort
 API](http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/) to query
@@ -43,8 +44,7 @@ remotes::install_github("RGLab/ImmPortR")
 > The IBM Aspera Command-Line Interface (the Aspera CLI) is a collection
 > of Aspera tools for performing high-speed, secure data transfers from
 > the command line. The Aspera CLI is for users and organizations who
-> want to automate their transfer
-    workflows.
+> want to automate their transfer workflows.
 
   - [Download](https://downloads.asperasoft.com/en/downloads/62)
   - [Documentation](https://downloads.asperasoft.com/en/documentation/62)
