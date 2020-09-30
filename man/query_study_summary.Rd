@@ -6,6 +6,9 @@
 \usage{
 query_study_summary(study)
 }
+\arguments{
+\item{study}{a character. study accession.}
+}
 \value{
 A list
 }

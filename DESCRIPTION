@@ -1,9 +1,9 @@
 Package: ImmPortR
 Version: 0.0.1
-Title: An R wrapper around the ImmPort API
-Description: ImmPortR is an R wrapper around the ImmPort API to query datasets
-  from ImmPort Shared Data and upload data to ImmPort Private Data, and it also
-  utilizes the Aspera CLI to download files from ImmPort Shared Data.
+Title: An R wrapper Around the ImmPort API
+Description: Wraps around the ImmPort API to query datasets from ImmPort
+  Shared Data and upload data to ImmPort Private Data, and utilizes the Aspera
+  CLI to download files from ImmPort Shared Data.
 Authors@R: person("Ju Yeong", "Kim", email = "jkim2345@fredhutch.org", role = c("aut", "cre"))
 URL: https://github.com/RGLab/ImmPortR
 BugReports: https://github.com/RGLab/ImmPortR/issues

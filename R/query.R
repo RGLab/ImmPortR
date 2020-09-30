@@ -126,6 +126,8 @@ query_datarelversion <- function() {
 
 #' query the study summary
 #'
+#' @param study a character. study accession.
+#'
 #' @return A list
 #'
 #' @references \url{http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/}
