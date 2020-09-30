@@ -34,17 +34,17 @@ jobs:
       - name: Install aspera
         run: |
           if [ "$RUNNER_OS" == "Linux" ]; then
-            wget https://download.asperasoft.com/download/sw/cli/3.9.1/ibm-aspera-cli-3.9.1.1401.be67d47-linux-64-release.sh -P ~/
-            chmod +x ~/ibm-aspera-cli-3.9.1.1401.be67d47-linux-64-release.sh
-            ~/ibm-aspera-cli-3.9.1.1401.be67d47-linux-64-release.sh
+            curl --insecure https://ak-delivery04-mul.dhe.ibm.com/sar/CMA/OSA/08q6g/0/ibm-aspera-cli-3.9.6.1467.159c5b1-linux-64-release.sh --output ~/cli.sh
+            chmod +x ~/cli.sh
+            ~/cli.sh
           elif [ "$RUNNER_OS" == "macOS" ]; then
-            wget https://download.asperasoft.com/download/sw/cli/3.9.1/ibm-aspera-cli-3.9.1.1401.be67d47-mac-10.7-64-release.sh -P ~/
-            chmod +x ~/ibm-aspera-cli-3.9.1.1401.be67d47-mac-10.7-64-release.sh
-            ~/ibm-aspera-cli-3.9.1.1401.be67d47-mac-10.7-64-release.sh
+            curl --insecure https://ak-delivery04-mul.dhe.ibm.com/sar/CMA/OSA/08q6l/0/ibm-aspera-cli-3.9.6.1467.159c5b1-mac-10.11-64-release.sh --output ~/cli.sh
+            chmod +x ~/cli.sh
+            ~/cli.sh
           elif [ "$RUNNER_OS" == "Windows" ]; then
             mkdir /c/aspera
-            curl --insecure https://download.asperasoft.com/download/sw/cli/3.9.1/ibm-aspera-cli-3.9.1.1401.be67d47-win-v140_xp-32-release.zip --output /c/aspera/ibm-aspera-cli-3.9.1.1401.be67d47-win-v140_xp-32-release.zip
-            unzip /c/aspera/ibm-aspera-cli-3.9.1.1401.be67d47-win-v140_xp-32-release.zip -d /c/aspera
+            curl --insecure https://ak-delivery04-mul.dhe.ibm.com/sar/CMA/OSA/08rb6/0/ibm-aspera-cli-3.9.6.1471.fbf92c2-win-v140_xp-32-release.zip --output /c/aspera/cli.zip
+            unzip /c/aspera/cli.zip -d /c/aspera
           else
             echo "$RUNNER_OS not supported"
             exit 1

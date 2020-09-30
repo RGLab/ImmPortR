@@ -19,8 +19,9 @@ API](http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/) to query
 datasets from [ImmPort Shared Data](https://www.immport.org/shared/home)
 and upload data to [ImmPort Private
 Data](https://immport.niaid.nih.gov/home), and it also utilizes [the
-Aspera CLI](https://downloads.asperasoft.com/en/documentation/62) to
-download files from ImmPort Shared Data.
+Aspera
+CLI](https://www.ibm.com/support/fixcentral/swg/selectFixes?parent=ibm~Other%20software&product=ibm/Other%20software/IBM%20Aspera%20CLI&release=All&platform=All&function=all)
+to download files from ImmPort Shared Data.
 
 ## What is ImmPort?
 
@@ -46,8 +47,12 @@ remotes::install_github("RGLab/ImmPortR")
 > the command line. The Aspera CLI is for users and organizations who
 > want to automate their transfer workflows.
 
-  - [Download](https://downloads.asperasoft.com/en/downloads/62)
-  - [Documentation](https://downloads.asperasoft.com/en/documentation/62)
+  - [Download](https://www.ibm.com/support/fixcentral/swg/selectFixes?parent=ibm~Other%20software&product=ibm/Other%20software/IBM%20Aspera%20CLI&release=All&platform=All&function=all)
+  - [Documentation](https://www.ibm.com/support/knowledgecenter/SS4F2E_3.9/navigation/cli_welcome.html)
+
+Take a look at
+[this](https://github.com/RGLab/ImmPortR/blob/master/.github/workflows/R-CMD-check.yaml#L34-L52)
+for guidance on installing the Aspera CLI.
 
 ## Register and set ImmPort credentials
 
