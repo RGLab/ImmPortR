@@ -5,16 +5,16 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>An R wrapper around the ImmPort API • ImmPortR</title>
+<title>An R wrapper Around the ImmPort API • ImmPortR</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="An R wrapper around the ImmPort API">
-<meta property="og:description" content="ImmPortR is an R wrapper around the ImmPort API to query datasets
-  from ImmPort Shared Data and upload data to ImmPort Private Data, and it also
-  utilizes the Aspera CLI to download files from ImmPort Shared Data.">
+<script src="pkgdown.js"></script><meta property="og:title" content="An R wrapper Around the ImmPort API">
+<meta property="og:description" content="Wraps around the ImmPort API to query datasets from ImmPort
+  Shared Data and upload data to ImmPort Private Data, and utilizes the Aspera
+  CLI to download files from ImmPort Shared Data.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -90,8 +90,9 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#immportr" class="anchor"></a>ImmPortR</h1></div>
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- badges: start -->
 
-<p><code>ImmPortR</code> is an R wrapper around <a href="http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/">the ImmPort API</a> to query datasets from <a href="https://www.immport.org/shared/home">ImmPort Shared Data</a> and upload data to <a href="https://immport.niaid.nih.gov/home">ImmPort Private Data</a>, and it also utilizes <a href="https://downloads.asperasoft.com/en/documentation/62">the Aspera CLI</a> to download files from ImmPort Shared Data.</p>
+<p><code>ImmPortR</code> is an R wrapper around <a href="http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/">the ImmPort API</a> to query datasets from <a href="https://www.immport.org/shared/home">ImmPort Shared Data</a> and upload data to <a href="https://immport.niaid.nih.gov/home">ImmPort Private Data</a>, and it also utilizes <a href="https://www.ibm.com/support/fixcentral/swg/selectFixes?parent=ibm~Other%20software&amp;product=ibm/Other%20software/IBM%20Aspera%20CLI&amp;release=All&amp;platform=All&amp;function=all">the Aspera CLI</a> to download files from ImmPort Shared Data.</p>
 <div id="what-is-immport" class="section level2">
 <h2 class="hasAnchor">
 <a href="#what-is-immport" class="anchor"></a>What is ImmPort?</h2>
@@ -105,8 +106,9 @@
 <div id="immportr-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#immportr-1" class="anchor"></a>ImmPortR</h3>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("remotes")</span>
-<span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"RGLab/ImmPortR"</span>)</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="co"># install.packages("remotes")</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"RGLab/ImmPortR"</span><span class="op">)</span></pre></div>
 </div>
 <div id="the-aspera-cli" class="section level3">
 <h3 class="hasAnchor">
@@ -115,9 +117,10 @@
 <p>The IBM Aspera Command-Line Interface (the Aspera CLI) is a collection of Aspera tools for performing high-speed, secure data transfers from the command line. The Aspera CLI is for users and organizations who want to automate their transfer workflows.</p>
 </blockquote>
 <ul>
-<li><a href="https://downloads.asperasoft.com/en/downloads/62">Download</a></li>
-<li><a href="https://downloads.asperasoft.com/en/documentation/62">Documentation</a></li>
+<li><a href="https://www.ibm.com/support/fixcentral/swg/selectFixes?parent=ibm~Other%20software&amp;product=ibm/Other%20software/IBM%20Aspera%20CLI&amp;release=All&amp;platform=All&amp;function=all">Download</a></li>
+<li><a href="https://www.ibm.com/support/knowledgecenter/SS4F2E_3.9/navigation/cli_welcome.html">Documentation</a></li>
 </ul>
+<p>Take a look at <a href="https://github.com/RGLab/ImmPortR/blob/master/.github/workflows/R-CMD-check.yaml#L34-L52">this</a> for guidance on installing the Aspera CLI.</p>
 </div>
 </div>
 <div id="register-and-set-immport-credentials" class="section level2">
@@ -128,8 +131,9 @@
 <li>Read <a href="http://www.immport.org/agreement">the User Agreement</a> for ImmPort</li>
 <li>Set environment variables with your ImmPort credentials, on your R console:</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span>(<span class="kw">ImmPortUsername</span> <span class="kw">=</span> <span class="st">"yourImmPortUsername"</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span>(<span class="kw">ImmPortPassword</span> <span class="kw">=</span> <span class="st">"yourImmPortPassword"</span>)</pre></div>
+<!-- end list --><div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span><span class="op">(</span>ImmPortUsername <span class="op">=</span> <span class="st">"yourImmPortUsername"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span><span class="op">(</span>ImmPortPassword <span class="op">=</span> <span class="st">"yourImmPortPassword"</span><span class="op">)</span></pre></div>
 <ul>
 <li>Or in <code>.Renviron</code> file in your home directory:</li>
 </ul>
@@ -142,27 +146,30 @@
 <div id="query-datasets" class="section level3">
 <h3 class="hasAnchor">
 <a href="#query-datasets" class="anchor"></a>Query datasets</h3>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ImmPortR</span>)
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/RGLab/ImmPortR">ImmPortR</a></span><span class="op">)</span>
 
-<span class="no">elisa</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/query_dataset.html">query_dataset</a></span>(<span class="st">"SDY269"</span>, <span class="st">"elisa"</span>)
-<span class="no">elispot</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/query_dataset.html">query_dataset</a></span>(<span class="st">"SDY269"</span>, <span class="st">"elispot"</span>)
-<span class="no">fcsAnalyzed</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/query_dataset.html">query_dataset</a></span>(<span class="st">"SDY269"</span>, <span class="st">"fcsAnalyzed"</span>)
-<span class="no">hai</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/query_dataset.html">query_dataset</a></span>(<span class="st">"SDY269"</span>, <span class="st">"hai"</span>)
-<span class="no">hlaTyping</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/query_dataset.html">query_dataset</a></span>(<span class="st">"SDY269"</span>, <span class="st">"hlaTyping"</span>)
-<span class="no">kirTyping</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/query_dataset.html">query_dataset</a></span>(<span class="st">"SDY269"</span>, <span class="st">"kirTyping"</span>)
-<span class="no">mbaa</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/query_dataset.html">query_dataset</a></span>(<span class="st">"SDY269"</span>, <span class="st">"mbaa"</span>)
-<span class="no">neutAbTiter</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/query_dataset.html">query_dataset</a></span>(<span class="st">"SDY269"</span>, <span class="st">"neutAbTiter"</span>)
-<span class="no">pcr</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/query_dataset.html">query_dataset</a></span>(<span class="st">"SDY269"</span>, <span class="st">"pcr"</span>)</pre></div>
+<span class="va">elisa</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/query_dataset.html">query_dataset</a></span><span class="op">(</span><span class="st">"SDY269"</span>, <span class="st">"elisa"</span><span class="op">)</span>
+<span class="va">elispot</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/query_dataset.html">query_dataset</a></span><span class="op">(</span><span class="st">"SDY269"</span>, <span class="st">"elispot"</span><span class="op">)</span>
+<span class="va">fcsAnalyzed</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/query_dataset.html">query_dataset</a></span><span class="op">(</span><span class="st">"SDY269"</span>, <span class="st">"fcsAnalyzed"</span><span class="op">)</span>
+<span class="va">hai</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/query_dataset.html">query_dataset</a></span><span class="op">(</span><span class="st">"SDY269"</span>, <span class="st">"hai"</span><span class="op">)</span>
+<span class="va">hlaTyping</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/query_dataset.html">query_dataset</a></span><span class="op">(</span><span class="st">"SDY269"</span>, <span class="st">"hlaTyping"</span><span class="op">)</span>
+<span class="va">kirTyping</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/query_dataset.html">query_dataset</a></span><span class="op">(</span><span class="st">"SDY269"</span>, <span class="st">"kirTyping"</span><span class="op">)</span>
+<span class="va">mbaa</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/query_dataset.html">query_dataset</a></span><span class="op">(</span><span class="st">"SDY269"</span>, <span class="st">"mbaa"</span><span class="op">)</span>
+<span class="va">neutAbTiter</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/query_dataset.html">query_dataset</a></span><span class="op">(</span><span class="st">"SDY269"</span>, <span class="st">"neutAbTiter"</span><span class="op">)</span>
+<span class="va">pcr</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/query_dataset.html">query_dataset</a></span><span class="op">(</span><span class="st">"SDY269"</span>, <span class="st">"pcr"</span><span class="op">)</span></pre></div>
 </div>
 <div id="download-files" class="section level3">
 <h3 class="hasAnchor">
 <a href="#download-files" class="anchor"></a>Download files</h3>
-<div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="reference/download_immport.html">download_immport</a></span>(<span class="st">"/SDY1/StudyFiles/Casale_Study_Summary_Report.doc"</span>)</pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="fu"><a href="reference/download_immport.html">download_immport</a></span><span class="op">(</span><span class="st">"/SDY1/StudyFiles/Casale_Study_Summary_Report.doc"</span><span class="op">)</span></pre></div>
 </div>
 <div id="validate-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#validate-data" class="anchor"></a>Validate data</h3>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="fu"><a href="reference/validate_zip.html">validate_zip</a></span>(<span class="st">"yourStudyData.zip"</span>, <span class="kw">workspace_id</span> <span class="kw">=</span> <span class="fl">99999</span>, <span class="kw">upload_notes</span> <span class="kw">=</span> <span class="st">"for SDY9999"</span>)</pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="fu"><a href="reference/validate_zip.html">validate_zip</a></span><span class="op">(</span><span class="st">"yourStudyData.zip"</span>, workspace_id <span class="op">=</span> <span class="fl">99999</span>, upload_notes <span class="op">=</span> <span class="st">"for SDY9999"</span><span class="op">)</span></pre></div>
 </div>
 </div>
 </div>
@@ -195,8 +202,7 @@
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://travis-ci.org/RGLab/ImmPortR"><img src="https://travis-ci.org/RGLab/ImmPortR.svg?branch=master" alt="Travis build status"></a></li>
-<li><a href="https://ci.appveyor.com/project/juyeongkim/immportr"><img src="https://ci.appveyor.com/api/projects/status/umenopusk26e89mf?svg=true" alt="AppVeyor build status"></a></li>
+<li><a href="https://github.com/RGLab/ImmPortR/actions"><img src="https://github.com/RGLab/ImmPortR/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://codecov.io/github/RGLab/ImmPortR?branch=master"><img src="https://codecov.io/gh/RGLab/ImmPortR/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
 <li><a href="https://www.repostatus.org/#wip"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public."></a></li>
 </ul>
@@ -210,7 +216,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

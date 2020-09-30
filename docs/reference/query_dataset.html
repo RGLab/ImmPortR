@@ -139,7 +139,7 @@
     <p>query dataset by study accession</p>
     </div>
 
-    <pre class="usage"><span class='fu'>query_dataset</span>(<span class='no'>study</span>, <span class='no'>dataset</span>)</pre>
+    <pre class="usage"><span class='fu'>query_dataset</span><span class='op'>(</span><span class='va'>study</span>, <span class='va'>dataset</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -163,17 +163,18 @@
     <p><a href='http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/'>http://docs.immport.org/#API/DataQueryAPI/dataqueryapi/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>elisa</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"SDY269"</span>, <span class='st'>"elisa"</span>)
-<span class='no'>elispot</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"SDY269"</span>, <span class='st'>"elispot"</span>)
-<span class='no'>fcsAnalyzed</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"SDY269"</span>, <span class='st'>"fcsAnalyzed"</span>)
-<span class='no'>hai</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"SDY269"</span>, <span class='st'>"hai"</span>)
-<span class='no'>hlaTyping</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"SDY269"</span>, <span class='st'>"hlaTyping"</span>)
-<span class='no'>kirTyping</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"SDY269"</span>, <span class='st'>"kirTyping"</span>)
-<span class='no'>mbaa</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"SDY269"</span>, <span class='st'>"mbaa"</span>)
-<span class='no'>neutAbTiter</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"SDY269"</span>, <span class='st'>"neutAbTiter"</span>)
-<span class='no'>pcr</span> <span class='kw'>&lt;-</span> <span class='fu'>query_dataset</span>(<span class='st'>"SDY269"</span>, <span class='st'>"pcr"</span>)
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>elisa</span> <span class='op'>&lt;-</span> <span class='fu'>query_dataset</span><span class='op'>(</span><span class='st'>"SDY269"</span>, <span class='st'>"elisa"</span><span class='op'>)</span>
+<span class='va'>elispot</span> <span class='op'>&lt;-</span> <span class='fu'>query_dataset</span><span class='op'>(</span><span class='st'>"SDY269"</span>, <span class='st'>"elispot"</span><span class='op'>)</span>
+<span class='va'>fcsAnalyzed</span> <span class='op'>&lt;-</span> <span class='fu'>query_dataset</span><span class='op'>(</span><span class='st'>"SDY269"</span>, <span class='st'>"fcsAnalyzed"</span><span class='op'>)</span>
+<span class='va'>hai</span> <span class='op'>&lt;-</span> <span class='fu'>query_dataset</span><span class='op'>(</span><span class='st'>"SDY269"</span>, <span class='st'>"hai"</span><span class='op'>)</span>
+<span class='va'>hlaTyping</span> <span class='op'>&lt;-</span> <span class='fu'>query_dataset</span><span class='op'>(</span><span class='st'>"SDY269"</span>, <span class='st'>"hlaTyping"</span><span class='op'>)</span>
+<span class='va'>kirTyping</span> <span class='op'>&lt;-</span> <span class='fu'>query_dataset</span><span class='op'>(</span><span class='st'>"SDY269"</span>, <span class='st'>"kirTyping"</span><span class='op'>)</span>
+<span class='va'>mbaa</span> <span class='op'>&lt;-</span> <span class='fu'>query_dataset</span><span class='op'>(</span><span class='st'>"SDY269"</span>, <span class='st'>"mbaa"</span><span class='op'>)</span>
+<span class='va'>neutAbTiter</span> <span class='op'>&lt;-</span> <span class='fu'>query_dataset</span><span class='op'>(</span><span class='st'>"SDY269"</span>, <span class='st'>"neutAbTiter"</span><span class='op'>)</span>
+<span class='va'>pcr</span> <span class='op'>&lt;-</span> <span class='fu'>query_dataset</span><span class='op'>(</span><span class='st'>"SDY269"</span>, <span class='st'>"pcr"</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -189,7 +190,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
