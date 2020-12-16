@@ -5,13 +5,11 @@ ImmPortR
 
 <!-- badges: start -->
 
-[![R build
-status](https://github.com/RGLab/ImmPortR/workflows/R-CMD-check/badge.svg)](https://github.com/RGLab/ImmPortR/actions)
+[![R-CMD-check](https://github.com/RGLab/ImmPortR/workflows/R-CMD-check/badge.svg)](https://github.com/RGLab/ImmPortR/actions)
 [![Coverage
 status](https://codecov.io/gh/RGLab/ImmPortR/branch/master/graph/badge.svg)](https://codecov.io/github/RGLab/ImmPortR?branch=master)
-[![Project Status: WIP – Initial development is in progress, but there
-has not yet been a stable, usable release suitable for the
-public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Lifecycle:
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 <!-- badges: end -->
 
 `ImmPortR` is an R wrapper around [the ImmPort
