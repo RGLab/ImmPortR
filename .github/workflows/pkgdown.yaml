@@ -44,6 +44,9 @@ jobs:
         run: R CMD INSTALL .
 
       - name: Deploy package
+        env:
+          ImmPortUsername: ${{ secrets.IMMPORTUSERNAME }}
+          ImmPortPassword: ${{ secrets.IMMPORTPASSWORD }}
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
