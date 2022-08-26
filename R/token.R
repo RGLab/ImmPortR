@@ -21,7 +21,7 @@ get_token <- function(username = Sys.getenv("ImmPortUsername"),
     stop(content(res)$error, call. = FALSE)
   }
 
-  token <- content(res)$token
+  token <- content(res)$access_token
   if (is.null(token)) stop("something went wrong...")
 
   options(ImmPortToken = token, ImmPortTokenTime = Sys.time())
