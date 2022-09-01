@@ -1,7 +1,6 @@
 pandoc: 2.7.3
-pkgdown: 1.6.1
+pkgdown: 2.0.6
 pkgdown_sha: ~
-articles:
-  SDY180: SDY180.html
-last_built: 2021-07-27T16:08Z
+articles: {}
+last_built: 2022-09-01T20:48Z
 
