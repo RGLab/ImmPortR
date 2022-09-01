@@ -6,8 +6,7 @@ template:
 reference:
   - title: "Query"
     contents:
-      - query_dataset
-      - query_filePath
+      - starts_with("query_")
   - title: "Download"
     contents:
       - list_immport
