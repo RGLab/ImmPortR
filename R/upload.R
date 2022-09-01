@@ -114,7 +114,7 @@ generate_templates <- function(workspace_id, output_dir = ".") {
     workspace_id
   )
   token <- get_token()
-  os <- get_os()
+
   output_file <- file.path(output_dir, paste0("ImmportTemplates.", workspace_id, ".zip"))
 
   res <- GET(
@@ -147,7 +147,6 @@ generate_templates <- function(workspace_id, output_dir = ".") {
 #' @export
 list_workspaces <- function() {
   path <- "workspaces"
-  os <- get_os()
 
   upload_get(path)$workspaces
 }
@@ -172,8 +171,6 @@ validate_zip <- function(file_path, workspace_id, upload_notes = "") {
   stopifnot(is.character(file_path))
   stopifnot(file.exists(file_path))
   stopifnot(tools::file_ext(file_path) == "zip")
-
-  os <- get_os()
 
   upload_online(
     file_path = file_path,
@@ -206,8 +203,6 @@ check_status <- function(ticket) {
     "status"
   )
 
-  os <- get_os()
-
   upload_get(path)$status
 }
 
@@ -234,8 +229,6 @@ get_ticket_summary <- function(ticket) {
     "reports",
     "summary"
   )
-
-  os <- get_os()
 
   upload_get(path)$summary
 }
@@ -274,8 +267,6 @@ download_ticket_report <- function(ticket, output_dir = ".") {
     "reports",
     "database"
   )
-
-  os <- get_os()
 
   text <- upload_get(path)$database
 
